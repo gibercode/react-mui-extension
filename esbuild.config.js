@@ -1,6 +1,6 @@
 require("esbuild")
   .build({
-    entryPoints: ["src/popup.js", "src/options.js", "src/index.js"],
+    entryPoints: ["src/popup.tsx", "src/options.tsx", "src/index.tsx"],
     bundle: true,
     outdir: "public/dist",
     minify: true,

@@ -12,7 +12,7 @@ export function App() {
 
   return (
     <Box sx={{ p: 2 }}>
-      <h1>My React Chrome Extension</h1>
+      <h1>My React Extension</h1>
       <TextField
         label="Type something"
         variant="outlined"
