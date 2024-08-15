@@ -1,0 +1,35 @@
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
+
+export const Login = () => {
+  const navigate = useNavigate();
+  const [text, setText] = useState("");
+
+  const handleChange = (event) => {
+    setText(event.target.value);
+  };
+
+  return (
+    <Box sx={{ p: 2 }}>
+      <h1>My React Extension</h1>
+      <TextField
+        label="Type something"
+        variant="outlined"
+        value={text}
+        onChange={handleChange}
+        fullWidth
+      />
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ mt: 2 }}
+        onClick={() => navigate("/dashboard")}
+      >
+        Submit
+      </Button>
+    </Box>
+  );
+};
