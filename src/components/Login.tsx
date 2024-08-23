@@ -3,8 +3,11 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
+import { useCountStore } from "../store/count";
+import { Typography } from "@mui/material";
 
 export const Login = () => {
+  const { count, increaseCount } = useCountStore();
   const navigate = useNavigate();
   const [text, setText] = useState("");
 
@@ -31,7 +34,6 @@ export const Login = () => {
 
   const insertHelloWorld = () => {
     const element: any = document.getElementById("apex_desktop");
-
     const helloWorldDiv = document.createElement("div");
     helloWorldDiv.innerText = "¡Hola, mundo!";
     helloWorldDiv.style.fontSize = "24px";
@@ -71,6 +73,17 @@ export const Login = () => {
       >
         Submit
       </Button>
+
+      <Button
+        id="count"
+        variant="contained"
+        color="primary"
+        sx={{ mt: 2 }}
+        onClick={increaseCount}
+      >
+        Count
+      </Button>
+      <Typography>Count: {count}</Typography>
     </Box>
   );
 };

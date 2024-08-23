@@ -18,7 +18,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "zustand": "^4.5.5",
+    "zustand-chrome-local-storage": "^0.0.5-alpha-2"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.270",
