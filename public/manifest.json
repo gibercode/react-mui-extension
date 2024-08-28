@@ -7,6 +7,6 @@
     "service_worker": "dist/background.js"
   },
   "action": {},
-  "permissions": ["activeTab", "scripting", "tabs", "storage"],
+  "permissions": ["activeTab", "scripting", "tabs", "storage", "sidePanel", "contextMenus"],
   "host_permissions": ["https://*/*"]
 }
