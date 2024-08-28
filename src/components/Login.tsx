@@ -8,6 +8,7 @@ import { Typography } from '@mui/material';
 import ReactDOM from 'react-dom';
 import { Dashboard } from './Dashboard';
 import { App } from './App';
+import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 export const Login = () => {
   const { count, increaseCount } = useCountStore();
@@ -48,6 +49,7 @@ export const Login = () => {
   const insertSidePanelRight = () => {
     const element: any = document.getElementById('a-page');
     const appContainer = document.createElement('div');
+
     appContainer.id = 'side-panel';
 
     appContainer.style.position = 'fixed';
@@ -60,13 +62,10 @@ export const Login = () => {
 
     element.style.paddingRight = '350px';
 
-    // Inserta el contenedor en el body de la página
-
     // Inserta el contenedor en el elemento específico de Amazon
-    element.appendChild(appContainer);
-
-    // Renderiza la aplicación en el contenedor
-    // ReactDOM.render(<Dashboard />, appContainer);
+    // document.body.appendChild(appContainer);
+    // ReactDOM.createRoot(appContainer).render(<Main />, appContainer);
+    ReactDOM.render(<Main />, appContainer);
   };
 
   const insertSidePanelLeft = () => {
@@ -83,14 +82,6 @@ export const Login = () => {
     appContainer.style.backgroundColor = 'white';
 
     element.style.paddingLeft = '350px';
-
-    // Inserta el contenedor en el body de la página
-
-    // Inserta el contenedor en el elemento específico de Amazon
-    element.appendChild(appContainer);
-
-    // Renderiza la aplicación en el contenedor
-    // ReactDOM.render(<Dashboard />, appContainer);
   };
 
   return (
@@ -132,5 +123,21 @@ export const Login = () => {
         insertar sidepanel left
       </Button>
     </Box>
+  );
+};
+
+const Main = () => {
+  return (
+    <Frame>
+      <FrameContextConsumer>
+        {() => {
+          return (
+            <div>
+              <p style={{ fontSize: '24px', color: 'blue', textAlign: 'center', marginTop: '20px' }}>Hello, world!</p>
+            </div>
+          );
+        }}
+      </FrameContextConsumer>
+    </Frame>
   );
 };

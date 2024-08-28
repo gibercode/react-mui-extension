@@ -2,17 +2,19 @@ let popupWindowId = null;
 
 // VALIDATE IF THE WINDOW IS OPEN IF NOT THEN OPEN
 chrome.action.onClicked.addListener((tab) => {
-  if (popupWindowId) {
-    chrome.windows.get(popupWindowId, (window) => {
-      if (chrome.runtime.lastError) {
-        popupWindowId = null;
-        createPopupWindow();
-      } else {
-        chrome.windows.update(popupWindowId, { focused: true });
-      }
-    });
-  } else {
-    createPopupWindow();
+  if (tab.url.includes('https://www.amazon.com/') && tab.url.includes('/dp/')) {
+    if (popupWindowId) {
+      chrome.windows.get(popupWindowId, (window) => {
+        if (chrome.runtime.lastError) {
+          popupWindowId = null;
+          createPopupWindow();
+        } else {
+          chrome.windows.update(popupWindowId, { focused: true });
+        }
+      });
+    } else {
+      createPopupWindow();
+    }
   }
 });
 

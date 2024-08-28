@@ -1,15 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import { Button, Grid, Typography } from '@mui/material';
+import React from 'react';
+import { Grid, Typography } from '@mui/material';
 import { styles } from './styles';
-import { getFromStorage, saveToStorage } from '../../storageHelper';
+import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 export const Dashboard = () => {
-  const [show, setShow] = useState(false);
-
   return (
-    <div>
-      <h1>Hello from Dashboard!</h1>
-    </div>
+    <Frame>
+      <FrameContextConsumer>
+        {() => {
+          return (
+            <Grid marginTop={'2rem'} marginLeft={'2rem'} xs={6} container columnGap={2}>
+              <Grid xs={4} position={'relative'}>
+                <Grid item sx={styles.box}>
+                  <Typography
+                    style={{
+                      position: 'absolute',
+                      zIndex: 1,
+                      fontSize: 12,
+                      color: 'red',
+                    }}>
+                    PARACUTIRI
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          );
+        }}
+      </FrameContextConsumer>
+    </Frame>
   );
 };

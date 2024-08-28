@@ -14,13 +14,5 @@
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "host_permissions": ["https://*/*"],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["/dist/background.js"],
-      "run_at": "document_end",
-      "all_frames": true
-    }
-  ]
+  "host_permissions": ["https://*/*"]
 }
