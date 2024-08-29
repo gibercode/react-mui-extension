@@ -2,8 +2,10 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { styles } from './styles';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
+import { useNavigate } from 'react-router-dom';
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <Frame>
       <FrameContextConsumer>
@@ -13,6 +15,7 @@ export const Dashboard = () => {
               <Grid xs={4} position={'relative'}>
                 <Grid item sx={styles.box}>
                   <Typography
+                    onClick={() => navigate('/')}
                     style={{
                       position: 'absolute',
                       zIndex: 1,

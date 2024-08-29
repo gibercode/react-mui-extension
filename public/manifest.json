@@ -8,5 +8,11 @@
   },
   "action": {},
   "permissions": ["activeTab", "scripting", "tabs", "storage", "sidePanel", "contextMenus"],
-  "host_permissions": ["https://*/*"]
+  "host_permissions": ["https://*/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["dist/popup.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

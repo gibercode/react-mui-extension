@@ -57,14 +57,8 @@ export const Login = () => {
     appContainer.style.right = '0';
     appContainer.style.width = '350px';
     appContainer.style.height = '100vh';
-
     appContainer.style.backgroundColor = 'white';
-
     element.style.paddingRight = '350px';
-
-    // Inserta el contenedor en el elemento específico de Amazon
-    // document.body.appendChild(appContainer);
-    // ReactDOM.createRoot(appContainer).render(<Main />, appContainer);
     ReactDOM.render(<Main />, appContainer);
   };
 
@@ -72,16 +66,41 @@ export const Login = () => {
     const element: any = document.getElementById('a-page');
     const appContainer = document.createElement('div');
     appContainer.id = 'side-panel';
-
     appContainer.style.position = 'fixed';
     appContainer.style.top = '0';
     appContainer.style.left = '0';
     appContainer.style.width = '350px';
     appContainer.style.height = '100vh';
-
     appContainer.style.backgroundColor = 'white';
-
     element.style.paddingLeft = '350px';
+  };
+
+  const injectReactApp = () => {
+    try {
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('apex_desktop');
+      if (!targetElement) return;
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const injectApp = () => {
+    chrome.tabs.query({}, (tabs: any) => {
+      const activeWeb = tabs?.find(({ url }) => url?.includes('https://www.amazon.com/'));
+      if (!activeWeb) return;
+
+      chrome.scripting.executeScript({
+        target: { tabId: activeWeb?.id || 0 },
+        func: injectReactApp,
+      });
+    });
   };
 
   return (
@@ -121,6 +140,9 @@ export const Login = () => {
         sx={{ mt: 2 }}
         onClick={() => handleClick(insertSidePanelLeft)}>
         insertar sidepanel left
+      </Button>
+      <Button id='count' variant='contained' color='primary' sx={{ mt: 2 }} onClick={injectApp}>
+        inject react app
       </Button>
     </Box>
   );

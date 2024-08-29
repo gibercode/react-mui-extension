@@ -1,12 +1,13 @@
-require("esbuild")
+const esbuild = require('esbuild');
+esbuild
   .build({
-    entryPoints: ["src/popup.tsx", "src/options.tsx"],
+    entryPoints: ['src/popup.tsx', 'src/options.tsx'],
     bundle: true,
-    outdir: "public/dist",
+    outdir: 'public/dist',
     minify: true,
     sourcemap: false,
-    target: ["chrome58", "firefox57"],
-    loader: { ".js": "jsx", ".tsx": "tsx" },
-    define: { "process.env.NODE_ENV": '"production"' },
+    target: ['chrome58', 'firefox57'],
+    loader: { '.js': 'jsx', '.tsx': 'tsx' },
+    define: { 'process.env.NODE_ENV': '"production"' },
   })
   .catch(() => process.exit(1));
