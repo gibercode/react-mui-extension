@@ -34,3 +34,9 @@ function createPopupWindow() {
     },
   );
 }
+
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.type === 'LOG') {
+    console.log(request.message);
+  }
+});

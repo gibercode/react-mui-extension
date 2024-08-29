@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+import { Button, Typography, Box, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useCountStore } from '../store/count';
-import { Typography } from '@mui/material';
 import ReactDOM from 'react-dom';
 import { Dashboard } from './Dashboard';
 import { App } from './App';
@@ -34,6 +31,15 @@ export const Login = () => {
     });
   };
 
+  const removeFloatingScreen = () => {
+    chrome.runtime.sendMessage({ type: 'LOG', message: 'removeFloatingScreen' });
+
+    const floatingScreen = document.getElementById('app');
+    if (floatingScreen) {
+      floatingScreen.remove();
+    }
+  };
+
   const insertHelloWorld = () => {
     const element: any = document.getElementById('apex_desktop');
     const helloWorldDiv = document.createElement('div');
@@ -47,6 +53,8 @@ export const Login = () => {
   };
 
   const insertSidePanelRight = () => {
+    // removeFloatingScreen();
+
     const element: any = document.getElementById('a-page');
     const appContainer = document.createElement('div');
 
@@ -62,10 +70,16 @@ export const Login = () => {
 
     element.style.paddingRight = '350px';
 
+    chrome.runtime.sendMessage({ type: 'LOG', message: 'test log' });
+
     // Inserta el contenedor en el elemento específico de Amazon
-    // document.body.appendChild(appContainer);
-    // ReactDOM.createRoot(appContainer).render(<Main />, appContainer);
-    ReactDOM.render(<Main />, appContainer);
+    document.body.appendChild(appContainer);
+
+    console.log(appContainer);
+    const root = ReactDOM.createRoot(appContainer);
+
+    root.render(<Main />);
+    // ReactDOM.render(<Main />, appContainer);
   };
 
   const insertSidePanelLeft = () => {
@@ -128,16 +142,17 @@ export const Login = () => {
 
 const Main = () => {
   return (
-    <Frame>
-      <FrameContextConsumer>
-        {() => {
-          return (
-            <div>
-              <p style={{ fontSize: '24px', color: 'blue', textAlign: 'center', marginTop: '20px' }}>Hello, world!</p>
-            </div>
-          );
-        }}
-      </FrameContextConsumer>
-    </Frame>
+    // <Frame>
+    <p>Hello, world!</p>
+    //  <FrameContextConsumer>
+    //       {() => {
+    //         return (
+    //           <div>
+    //             <p style={{ fontSize: '24px', color: 'blue', textAlign: 'center', marginTop: '20px' }}>Hello, world!</p>
+    //           </div>
+    //         );
+    //       }}
+    //     </FrameContextConsumer> */
+    //    </Frame>
   );
 };
