@@ -1,6 +1,4 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
-import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss'
 
