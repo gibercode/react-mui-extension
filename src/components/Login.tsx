@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Typography, Box, TextField } from '@mui/material';
+
 import { useNavigate } from 'react-router-dom';
 import { useCountStore } from '../store/count';
 import ReactDOM from 'react-dom';
-import { Dashboard } from './Dashboard';
-import { App } from './App';
-import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 export const Login = () => {
   const { count, increaseCount } = useCountStore();
@@ -122,47 +119,42 @@ export const Login = () => {
   };
 
   return (
-    <Box sx={{ p: 2 }}>
+    <div>
       <h1>My React Extension</h1>
-      <TextField label='Type something' variant='outlined' value={text} onChange={handleChange} fullWidth />
-      <Button
+      <input value={text} onChange={handleChange}>Type something'</input>
+      <button
         id='insert-html'
-        variant='contained'
-        color='primary'
-        sx={{ mt: 2 }}
+       
+       
         onClick={() => handleClick(insertHelloWorld)}>
         Insert HTML
-      </Button>
+      </button>
 
-      <Button id='insert-html' variant='contained' color='primary' sx={{ mt: 2 }} onClick={handleNavigate}>
+      <button id='insert-html'  onClick={handleNavigate}>
         Submit
-      </Button>
+      </button>
 
-      <Button id='count' variant='contained' color='primary' sx={{ mt: 2 }} onClick={increaseCount}>
+       <button id='count'  onClick={increaseCount}>
         Count
-      </Button>
-      <Typography>Count: {count}</Typography>
+        </button>
+      <p>Count: {count}</p>
 
-      <Button
+      <button
         id='count'
-        variant='contained'
-        color='primary'
-        sx={{ mt: 2 }}
+       
         onClick={() => handleClick(insertSidePanelRight)}>
         insertar sidepanel right
-      </Button>
-      <Button
+      </button>
+      <button
         id='count'
-        variant='contained'
-        color='primary'
-        sx={{ mt: 2 }}
+      
         onClick={() => handleClick(insertSidePanelLeft)}>
         insertar sidepanel left
-      </Button>
-      <Button id='count' variant='contained' color='primary' sx={{ mt: 2 }} onClick={injectApp}>
+      </button>
+      <button id='count'  onClick={injectApp}>
         inject react app
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 };
 

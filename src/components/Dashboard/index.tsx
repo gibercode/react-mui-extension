@@ -1,20 +1,17 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import { styles } from './styles';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 import { useNavigate } from 'react-router-dom';
+import styles from './styles.module.scss'
 
 export const Dashboard = () => {
   const navigate = useNavigate();
   return (
-    <Frame>
-      <FrameContextConsumer>
-        {() => {
-          return (
-            <Grid marginTop={'2rem'} marginLeft={'2rem'} xs={6} container columnGap={2}>
-              <Grid xs={4} position={'relative'}>
-                <Grid item sx={styles.box}>
-                  <Typography
+  
+            <div style={{margin:'2rem'}}>
+              <div style={{position:'relative' }} >
+                <div className={styles.box}>
+                  <p
                     onClick={() => navigate('/')}
                     style={{
                       position: 'absolute',
@@ -23,13 +20,11 @@ export const Dashboard = () => {
                       color: 'red',
                     }}>
                     PARACUTIRI
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
+                  </p>
+                </div>
+              </div>
+            </div>
           );
-        }}
-      </FrameContextConsumer>
-    </Frame>
-  );
+      
+  
 };
