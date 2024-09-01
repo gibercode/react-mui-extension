@@ -17,6 +17,8 @@ export const Login = () => {
   };
 
   const handleNavigate = () => {
+
+    
     navigate('/dashboard');
   };
 
@@ -31,14 +33,7 @@ export const Login = () => {
     });
   };
 
-  const removeFloatingScreen = () => {
-    chrome.runtime.sendMessage({ type: 'LOG', message: 'removeFloatingScreen' });
-
-    const floatingScreen = document.getElementById('app');
-    if (floatingScreen) {
-      floatingScreen.remove();
-    }
-  };
+ 
 
   const insertHelloWorld = () => {
     const element: any = document.getElementById('apex_desktop');
@@ -122,47 +117,27 @@ export const Login = () => {
   };
 
   return (
-    <Box sx={{ p: 2 }}>
+    <div>
       <h1>My React Extension</h1>
-      <TextField label='Type something' variant='outlined' value={text} onChange={handleChange} fullWidth />
-      <Button
-        id='insert-html'
-        variant='contained'
-        color='primary'
-        sx={{ mt: 2 }}
-        onClick={() => handleClick(insertHelloWorld)}>
+      {/* <input value={text} onChange={handleChange}>
+        Type something
+      </input> */}
+      <button id='insert-html' onClick={() => handleClick(insertHelloWorld)}>
         Insert HTML
-      </Button>
-
-      <Button id='insert-html' variant='contained' color='primary' sx={{ mt: 2 }} onClick={handleNavigate}>
+      </button>
+      <button id='insert-html' onClick={handleNavigate}>
         Submit
-      </Button>
-
-      <Button id='count' variant='contained' color='primary' sx={{ mt: 2 }} onClick={increaseCount}>
+      </button>
+      <button id='count' onClick={increaseCount}>
         Count
-      </Button>
-      <Typography>Count: {count}</Typography>
-
-      <Button
-        id='count'
-        variant='contained'
-        color='primary'
-        sx={{ mt: 2 }}
-        onClick={() => handleClick(insertSidePanelRight)}>
+      </button>
+      <button id='insert-html' onClick={() => handleClick(insertSidePanelRight)}>
         insertar sidepanel right
-      </Button>
-      <Button
-        id='count'
-        variant='contained'
-        color='primary'
-        sx={{ mt: 2 }}
-        onClick={() => handleClick(insertSidePanelLeft)}>
+      </button>
+      <button id='insert-html' onClick={() => handleClick(insertSidePanelLeft)}>
         insertar sidepanel left
-      </Button>
-      <Button id='count' variant='contained' color='primary' sx={{ mt: 2 }} onClick={injectApp}>
-        inject react app
-      </Button>
-    </Box>
+      </button>
+    </div>
   );
 };
 
