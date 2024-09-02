@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Typography, Box, TextField } from '@mui/material';
+
 import { useNavigate } from 'react-router-dom';
 import { useCountStore } from '../store/count';
 import ReactDOM from 'react-dom';
-import { Dashboard } from './Dashboard';
-import { App } from './App';
-import Frame, { FrameContextConsumer } from 'react-frame-component';
 
 export const Login = () => {
   const { count, increaseCount } = useCountStore();
@@ -119,23 +116,38 @@ export const Login = () => {
   return (
     <div>
       <h1>My React Extension</h1>
-      {/* <input value={text} onChange={handleChange}>
-        Type something
-      </input> */}
-      <button id='insert-html' onClick={() => handleClick(insertHelloWorld)}>
+      {/* <input value={text} onChange={handleChange}>Type something'</input> */}
+      <button
+        id='insert-html'
+       
+       
+        onClick={() => handleClick(insertHelloWorld)}>
         Insert HTML
       </button>
-      <button id='insert-html' onClick={handleNavigate}>
+
+      <button id='insert-html'  onClick={handleNavigate}>
         Submit
       </button>
-      <button id='count' onClick={increaseCount}>
+
+       <button id='count'  onClick={increaseCount}>
         Count
-      </button>
-      <button id='insert-html' onClick={() => handleClick(insertSidePanelRight)}>
+        </button>
+      <p>Count: {count}</p>
+
+      <button
+        id='count'
+       
+        onClick={() => handleClick(insertSidePanelRight)}>
         insertar sidepanel right
       </button>
-      <button id='insert-html' onClick={() => handleClick(insertSidePanelLeft)}>
+      <button
+        id='count'
+      
+        onClick={() => handleClick(insertSidePanelLeft)}>
         insertar sidepanel left
+      </button>
+      <button id='count'  onClick={injectApp}>
+        inject react app
       </button>
     </div>
   );
