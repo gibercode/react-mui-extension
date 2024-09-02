@@ -9,6 +9,12 @@
   "action": {},
   "permissions": ["activeTab", "scripting", "tabs", "storage"],
   "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.com/*"],
+      "css": ["dist/popup.css"]
+    }
+  ],
   "web_accessible_resources": [
     {
       "resources": ["dist/popup.js"],

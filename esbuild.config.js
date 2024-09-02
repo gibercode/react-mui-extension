@@ -10,9 +10,6 @@ esbuild
     target: ['chrome58', 'firefox57'],
     loader: { '.js': 'jsx', '.tsx': 'tsx', '.css': 'css', '.sass': 'css' },
     define: { 'process.env.NODE_ENV': '"production"' },
-    plugins: [
-      sassPlugin(),
-    
-    ],
+    plugins: [sassPlugin({ cssModules: true })],
   })
   .catch(() => process.exit(1));

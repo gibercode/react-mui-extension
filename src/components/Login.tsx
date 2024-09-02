@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCountStore } from '../store/count';
 import ReactDOM from 'react-dom';
-import styles from './login.module.scss'
+import './login.module.scss';
 
 export const Login = () => {
   const { count, increaseCount } = useCountStore();
   const navigate = useNavigate();
   const [text, setText] = useState('');
 
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
-
   const handleNavigate = () => {
-
-    
     navigate('/dashboard');
   };
 
@@ -30,8 +23,6 @@ export const Login = () => {
       });
     });
   };
-
- 
 
   const insertHelloWorld = () => {
     const element: any = document.getElementById('apex_desktop');
@@ -95,6 +86,11 @@ export const Login = () => {
       if (!targetElement) return;
       const reactRootDiv = document.createElement('div');
       reactRootDiv.id = 'app';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      document.head.appendChild(link);
       targetElement.appendChild(reactRootDiv);
       targetElement.appendChild(script);
     } catch (error) {
@@ -116,38 +112,28 @@ export const Login = () => {
 
   return (
     <div>
-      <h1 className={styles.text}>My React Extension</h1>
+      <h1 className='text'>My React Extension</h1>
       {/* <input value={text} onChange={handleChange}>Type something'</input> */}
-      <button
-        id='insert-html'
-       
-       
-        onClick={() => handleClick(insertHelloWorld)}>
+      <button id='insert-html' onClick={() => handleClick(insertHelloWorld)}>
         Insert HTML
       </button>
 
-      <button id='insert-html'  onClick={handleNavigate}>
+      <button id='insert-html' onClick={handleNavigate}>
         Submit
       </button>
 
-       <button id='count'  onClick={increaseCount}>
+      <button id='count' onClick={increaseCount}>
         Count
-        </button>
+      </button>
       <p>Count: {count}</p>
 
-      <button
-        id='count'
-       
-        onClick={() => handleClick(insertSidePanelRight)}>
+      <button id='count' onClick={() => handleClick(insertSidePanelRight)}>
         insertar sidepanel right
       </button>
-      <button
-        id='count'
-      
-        onClick={() => handleClick(insertSidePanelLeft)}>
+      <button id='count' onClick={() => handleClick(insertSidePanelLeft)}>
         insertar sidepanel left
       </button>
-      <button id='count'  onClick={injectApp}>
+      <button id='count' onClick={injectApp}>
         inject react app
       </button>
     </div>
