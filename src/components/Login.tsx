@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCountStore } from '../store/count';
 import ReactDOM from 'react-dom';
+import styles from './login.module.scss'
 
 export const Login = () => {
   const { count, increaseCount } = useCountStore();
@@ -115,7 +116,7 @@ export const Login = () => {
 
   return (
     <div>
-      <h1>My React Extension</h1>
+      <h1 className={styles.text}>My React Extension</h1>
       {/* <input value={text} onChange={handleChange}>Type something'</input> */}
       <button
         id='insert-html'
