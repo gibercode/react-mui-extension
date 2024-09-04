@@ -8,7 +8,7 @@ export const Dashboard = () => {
   return (
     <div style={{ margin: '2rem' }}>
       <div style={{ position: 'relative' }}>
-        <div>
+        <div className='box2'>
           <p onClick={() => navigate('/')} className='textTwo' style={{ cursor: 'pointer' }}>
             PARACUTIRI
           </p>

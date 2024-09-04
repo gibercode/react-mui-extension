@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCountStore } from '../store/count';
 import ReactDOM from 'react-dom';
-import './login.module.scss';
+import { FolderComponent } from './Folder';
 
 export const Login = () => {
   const { count, increaseCount } = useCountStore();
@@ -37,48 +37,75 @@ export const Login = () => {
   };
 
   const insertSidePanelRight = () => {
-    // removeFloatingScreen();
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('a-page');
 
-    const element: any = document.getElementById('a-page');
-    const appContainer = document.createElement('div');
+      if (!targetElement) return;
 
-    appContainer.id = 'side-panel';
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      reactRootDiv.style.position = 'fixed';
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.right = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.backgroundColor = 'white';
+      targetElement.style.paddingRight = '350px';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      // const font = document.createElement('link');
+      // font.href = '  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"';
+      // font.rel = 'stylesheet';
+      // document.head.appendChild(font);
+      document.head.appendChild(link);
 
-    appContainer.style.position = 'fixed';
-    appContainer.style.top = '0';
-    appContainer.style.right = '0';
-    appContainer.style.width = '350px';
-    appContainer.style.height = '100vh';
-    appContainer.style.backgroundColor = 'white';
-    element.style.paddingRight = '350px';
-
-    chrome.runtime.sendMessage({ type: 'LOG', message: 'test log' });
-
-    // Inserta el contenedor en el elemento específico de Amazon
-    document.body.appendChild(appContainer);
-
-    console.log(appContainer);
-    const root = ReactDOM.createRoot(appContainer);
-
-    root.render(<Main />);
-    // ReactDOM.render(<Main />, appContainer);
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
   };
 
   const insertSidePanelLeft = () => {
-    const element: any = document.getElementById('a-page');
-    const appContainer = document.createElement('div');
-    appContainer.id = 'side-panel';
-    appContainer.style.position = 'fixed';
-    appContainer.style.top = '0';
-    appContainer.style.left = '0';
-    appContainer.style.width = '350px';
-    appContainer.style.height = '100vh';
-    appContainer.style.backgroundColor = 'white';
-    element.style.paddingLeft = '350px';
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('a-page');
+
+      if (!targetElement) return;
+
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      reactRootDiv.style.position = 'fixed';
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.left = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.backgroundColor = 'white';
+      targetElement.style.paddingLeft = '350px';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      document.head.appendChild(link);
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
   };
 
   const injectReactApp = () => {
     try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
       const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
       const script = document.createElement('script');
       script.src = reactAppUrl;
@@ -96,18 +123,6 @@ export const Login = () => {
     } catch (error) {
       console.log('error');
     }
-  };
-
-  const injectApp = () => {
-    chrome.tabs.query({}, (tabs: any) => {
-      const activeWeb = tabs?.find(({ url }) => url?.includes('https://www.amazon.com/'));
-      if (!activeWeb) return;
-
-      chrome.scripting.executeScript({
-        target: { tabId: activeWeb?.id || 0 },
-        func: injectReactApp,
-      });
-    });
   };
 
   return (
@@ -133,26 +148,31 @@ export const Login = () => {
       <button id='count' onClick={() => handleClick(insertSidePanelLeft)}>
         insertar sidepanel left
       </button>
-      <button id='count' onClick={injectApp}>
+      <button id='count' onClick={() => handleClick(injectReactApp)}>
         inject react app
       </button>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ width: 100 }}>
+          <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+            <p style={{ color: '#40B73B', padding: 0, margin: 0, fontSize: '0.75rem', fontWeight: '600' }}>Yes</p>
+          </FolderComponent>
+        </div>
+        <div style={{ width: 100 }}>
+          <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+            <p style={{ color: '#40B73B', padding: 0, margin: 0, fontSize: '0.75rem', fontWeight: '600' }}>Yes</p>
+          </FolderComponent>
+        </div>
+        <div style={{ width: 100 }}>
+          <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+            <p style={{ color: '#40B73B', padding: 0, margin: 0, fontSize: '0.75rem', fontWeight: '600' }}>Yes</p>
+          </FolderComponent>
+        </div>
+        <div style={{ width: 100 }}>
+          <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+            <p style={{ color: '#40B73B', padding: 0, margin: 0, fontSize: '0.75rem', fontWeight: '600' }}>Yes</p>
+          </FolderComponent>
+        </div>
+      </div>
     </div>
-  );
-};
-
-const Main = () => {
-  return (
-    // <Frame>
-    <p>Hello, world!</p>
-    //  <FrameContextConsumer>
-    //       {() => {
-    //         return (
-    //           <div>
-    //             <p style={{ fontSize: '24px', color: 'blue', textAlign: 'center', marginTop: '20px' }}>Hello, world!</p>
-    //           </div>
-    //         );
-    //       }}
-    //     </FrameContextConsumer> */
-    //    </Frame>
   );
 };

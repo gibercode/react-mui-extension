@@ -1,4 +1,4 @@
-.box {
+.box2 {
   width: 'calc(${100}% + 1px)';
   height: '49px';
   background-color: 'red';
@@ -18,9 +18,3 @@
   }
 }
 
-.textTwo {
-  position: 'absolute';
-  z-index: 1;
-  font-size: 12;
-  color: green;
-}
