@@ -15,6 +15,7 @@
       "css": ["dist/popup.css"]
     }
   ],
+
   "web_accessible_resources": [
     {
       "resources": ["dist/popup.js"],
