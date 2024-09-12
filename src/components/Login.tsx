@@ -14,25 +14,24 @@ export const Login = () => {
   };
 
   //KNOW IF IS A CHROME EXTENSION OR INJECTED APP
-  // const isChromeExtension = () => {
-  //   return typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
-  // };
+  const isChromeExtension = () => {
+    return typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
+  };
 
-  const handleClick = (position) => {
-    movePanel(position);
+  const handleClick = (position, handleFunction?) => {
     // KNOW IF IS A CHROME EXTENSION OR INJECTED APP
-    // if (isChromeExtension()) {
-    //   chrome.tabs?.query({}, (tabs) => {
-    //     const activeWeb = tabs?.find(({ url }) => url?.includes('https://www.amazon.com/'));
-    //     if (!activeWeb) return;
-    //     chrome.scripting.executeScript({
-    //       target: { tabId: activeWeb?.id || 0 },
-    //       func: handleFunction,
-    //     });
-    //   });
-    // } else {
-    //   movePanel(position);
-    // }
+    if (isChromeExtension()) {
+      chrome.tabs?.query({}, (tabs) => {
+        const activeWeb = tabs?.find(({ url }) => url?.includes('https://www.amazon.com/'));
+        if (!activeWeb) return;
+        chrome.scripting.executeScript({
+          target: { tabId: activeWeb?.id || 0 },
+          func: handleFunction,
+        });
+      });
+    } else {
+      movePanel(position);
+    }
   };
 
   const movePanel = (position) => {
@@ -50,6 +49,7 @@ export const Login = () => {
       reactRootDiv.style.width = '';
       reactRootDiv.style.height = '';
       reactRootDiv.style.zIndex = '';
+      reactRootDiv.style.backgroundColor = 'white';
 
       const currentParent = reactRootDiv.parentElement;
       const targetElement = document.getElementById('a-page');
@@ -93,14 +93,124 @@ export const Login = () => {
         targetElement.style.paddingRight = '0';
 
         if (position === 'left') {
-          targetElement.style.paddingLeft = '350px'; // Acomodar el panel en el lado izquierdo
+          targetElement.style.paddingLeft = '350px';
         } else if (position === 'right') {
-          targetElement.style.paddingRight = '350px'; // Acomodar el panel en el lado derecho
+          targetElement.style.paddingRight = '350px';
         }
       }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const insertSidePanelRight = () => {
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('a-page');
+
+      if (!targetElement) return;
+
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      reactRootDiv.style.position = 'fixed';
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.right = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.backgroundColor = 'white';
+      targetElement.style.paddingRight = '350px';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      const font = document.createElement('link');
+      font.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap';
+      font.rel = 'stylesheet';
+      document.head.appendChild(font);
+      document.head.appendChild(link);
+
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const insertSidePanelLeft = () => {
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('a-page');
+
+      if (!targetElement) return;
+
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      reactRootDiv.style.position = 'fixed';
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.left = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.backgroundColor = 'white';
+      targetElement.style.paddingLeft = '350px';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      document.head.appendChild(link);
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const injectReactApp = () => {
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('apex_desktop');
+      if (!targetElement) return;
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      const font = document.createElement('link');
+      font.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap';
+      font.rel = 'stylesheet';
+      document.head.appendChild(font);
+      document.head.appendChild(link);
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const sendMessageToBackground = (message) => {
+    window.postMessage({ type: 'FROM_REACT_APP', message }, '*');
+  };
+
+  const handleOpenPopup = () => {
+    if (isChromeExtension()) return null;
+    const reactRootDiv = document.getElementById('app');
+    const targetElement = document.getElementById('a-page');
+    reactRootDiv?.remove();
+    if (targetElement) {
+      targetElement.style.paddingLeft = '0';
+      targetElement.style.paddingRight = '0';
+    }
+
+    sendMessageToBackground({ type: 'OPEN_POPUP' });
   };
 
   return (
@@ -117,14 +227,17 @@ export const Login = () => {
       </button>
       <p>Count: {count}</p>
 
-      <button id='count' onClick={() => handleClick('right')}>
+      <button id='count' onClick={() => handleClick('right', insertSidePanelRight)}>
         insertar sidepanel right
       </button>
-      <button id='count' onClick={() => handleClick('left')}>
+      <button id='count' onClick={() => handleClick('left', insertSidePanelLeft)}>
         insertar sidepanel left
       </button>
-      <button id='count' onClick={() => handleClick('initial')}>
+      <button id='count' onClick={() => handleClick('initial', injectReactApp)}>
         insertar en detalle
+      </button>
+      <button id='count' onClick={() => handleOpenPopup()}>
+        popup
       </button>
 
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>

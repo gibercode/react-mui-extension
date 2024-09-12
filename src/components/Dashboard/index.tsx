@@ -10,7 +10,7 @@ export const Dashboard = () => {
       <div style={{ position: 'relative' }}>
         <div className='box2'>
           <p onClick={() => navigate('/')} className='textTwo' style={{ cursor: 'pointer' }}>
-            PARACUTIRI
+            COME BACK
           </p>
         </div>
       </div>

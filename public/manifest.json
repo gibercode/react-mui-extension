@@ -9,10 +9,13 @@
   "action": {},
   "permissions": ["activeTab", "scripting", "tabs", "storage"],
   "host_permissions": ["https://*/*"],
+
   "content_scripts": [
     {
       "matches": ["https://www.amazon.com/*"],
-      "css": ["dist/popup.css"]
+      "css": ["dist/popup.css"],
+      "js": ["dist/contentScripts.js"],
+      "run_at": "document_idle"
     }
   ],
 

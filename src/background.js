@@ -33,46 +33,50 @@ function injectReactApp(tabId) {
 
 //MAKE FLOATING POPUP
 
-// let popupWindowId = null;
+let popupWindowId = null;
 
-// chrome.action.onClicked.addListener((tab) => {
-//   if (tab.url.includes('https://www.amazon.com/') && tab.url.includes('/dp/')) {
+chrome.action.onClicked.addListener((tab) => {
+  if (tab.url.includes('https://www.amazon.com/') && tab.url.includes('/dp/')) {
+    if (popupWindowId) {
+      chrome.windows.get(popupWindowId, (window) => {
+        if (chrome.runtime.lastError) {
+          popupWindowId = null;
+          injectReactApp(tab.id);
+        } else {
+          chrome.windows.update(popupWindowId, { focused: true });
+        }
+      });
+    }
+  }
+});
+function createPopupWindow() {
+  chrome.windows.create(
+    {
+      url: 'index.html',
+      type: 'popup',
+      width: 500,
+      height: 700,
+      left: 0,
+      top: 100,
+      focused: true,
+    },
+    (window) => {
+      popupWindowId = window.id;
+    },
+  );
+}
 
-//     if (popupWindowId) {
-//     chrome.windows.get(popupWindowId, (window) => {
-//       if (chrome.runtime.lastError) {
-//         popupWindowId = null;
-//         injectReactApp(tab.id);
-//         // createPopupWindow();
-//       } else {
-//         chrome.windows.update(popupWindowId, { focused: true });
-//       }
-//     });
-//     } else {
-//       createPopupWindow();
-//     }
-//   }
-// });
-// function createPopupWindow() {
-//   chrome.windows.create(
-//     {
-//       url: 'index.html',
-//       type: 'popup',
-//       width: 500,
-//       height: 700,
-//       left: 0,
-//       top: 100,
-//       focused: true,
-//     },
-//     (window) => {
-//       popupWindowId = window.id;
-//     },
-//   );
-// }
+function closePopupWindow() {
+  if (popupWindowId) {
+    chrome.windows.remove(popupWindowId, () => {
+      popupWindowId = null;
+    });
+  }
+}
 
 //MAKE FLOATING POPUP
 
-// LISTEN LOGS AND CLOSE POPUP
+// LISTENERS MESSAGE
 chrome.runtime.onMessage.addListener((request) => {
   if (request.type === 'LOG') {
     console.log(request.message);
@@ -84,5 +88,8 @@ chrome.runtime.onMessage.addListener((request) => {
       });
     }
   }
+  if (request.type === 'OPEN_POPUP') {
+    createPopupWindow();
+  }
 });
-// LISTEN LOGS AND CLOSE POPUP
+// LISTENERS MESSAGE

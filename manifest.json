@@ -10,10 +10,7 @@
     "service_worker": "index.tsx"
   },
   "permissions": ["activeTab", "scripting", "tabs", "storage"],
-  "icons": {
-    "48": "icon48.png",
-    "128": "icon128.png"
-  },
+
   "host_permissions": ["https://*/*"],
   "content_scripts": [
     {
