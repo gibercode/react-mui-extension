@@ -209,7 +209,7 @@ export const Login = () => {
       targetElement.style.paddingLeft = '0';
       targetElement.style.paddingRight = '0';
     }
-    //jjjjj
+
     sendMessageToBackground({ type: 'OPEN_POPUP' });
   };
 
