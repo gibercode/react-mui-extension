@@ -210,6 +210,7 @@ export const Login = () => {
       targetElement.style.paddingRight = '0';
     }
 
+    //s
     sendMessageToBackground({ type: 'OPEN_POPUP' });
   };
 
