@@ -12,6 +12,9 @@ function injectReactApp(tabId) {
       try {
         const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
         const script = document.createElement('script');
+        const logoUrl = chrome.runtime.getURL('dist/images/logo.svg');
+        console.log('Logo URL:', logoUrl);
+
         script.src = reactAppUrl;
         const targetElement = document.getElementById('apex_desktop');
         if (!targetElement) return;
@@ -21,6 +24,12 @@ function injectReactApp(tabId) {
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = chrome.runtime.getURL('dist/popup.css');
+        const font = document.createElement('link');
+        font.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap';
+        font.rel = 'stylesheet';
+
+        document.head.appendChild(font);
+
         document.head.appendChild(link);
         targetElement.appendChild(reactRootDiv);
         targetElement.appendChild(script);

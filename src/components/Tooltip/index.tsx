@@ -3,21 +3,13 @@ import './styles.module.scss';
 import { Icon } from '@iconify/react';
 import ReactDOM from 'react-dom';
 
-interface FolderComponentProps {
-  text: string;
-  borderColor?: string;
-  backgroundColor?: string;
-  children?: React.ReactNode;
+interface TooltipProps {
   tooltipContent?: React.ReactNode;
+  className?: string;
+  iconSize?: number;
 }
 
-export const FolderComponent: FC<FolderComponentProps> = ({
-  text,
-  borderColor,
-  backgroundColor,
-  children,
-  tooltipContent,
-}) => {
+export const Tooltip: FC<TooltipProps> = ({ tooltipContent, className, iconSize }) => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState<{ top: number; left: number }>({
     top: 0,
@@ -38,9 +30,9 @@ export const FolderComponent: FC<FolderComponentProps> = ({
   };
 
   return (
-    <div className='boxContainer'>
-      <div className='infoContainer' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <Icon icon='mdi:information-outline' cursor='pointer' width={10} color='var(--blue)' />
+    <>
+      <div className={className || 'infoContainer'} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Icon icon='mdi:information-outline' cursor='pointer' width={iconSize ?? 10} color='var(--blue)' />
       </div>
 
       {showTooltip &&
@@ -56,20 +48,6 @@ export const FolderComponent: FC<FolderComponentProps> = ({
           </div>,
           document.body,
         )}
-
-      <div
-        className='box'
-        style={
-          {
-            '--before-bg-color': borderColor || 'var(--green)',
-            '--after-bg-color': backgroundColor || 'var(--mint)',
-          } as React.CSSProperties
-        }>
-        <p className='title' style={{ color: borderColor || 'var(--green)' }}>
-          {text}
-        </p>
-        <div className='children'>{children}</div>
-      </div>
-    </div>
+    </>
   );
 };

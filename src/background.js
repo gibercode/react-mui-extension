@@ -21,6 +21,12 @@ function injectReactApp(tabId) {
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = chrome.runtime.getURL('dist/popup.css');
+        const font = document.createElement('link');
+        font.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap';
+        font.rel = 'stylesheet';
+
+        document.head.appendChild(font);
+
         document.head.appendChild(link);
         targetElement.appendChild(reactRootDiv);
         targetElement.appendChild(script);

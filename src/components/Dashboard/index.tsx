@@ -1,19 +1,328 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './styles.module.scss';
+import { FolderComponent } from '../Folder';
+import { useCountStore } from '../../store/count';
+import Accordion from '../Accordion';
+import { Icon } from '@iconify/react';
+import { Product } from './Elements/Product';
+import { Settings } from './Elements/Settings';
 
 export const Dashboard = () => {
+  const { count, increaseCount } = useCountStore();
   const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/dashboard');
+  };
+
+  //KNOW IF IS A CHROME EXTENSION OR INJECTED APP
+  const isChromeExtension = () => {
+    return typeof chrome !== 'undefined' && typeof chrome.runtime !== 'undefined';
+  };
+
+  const handleClick = (position, handleFunction?) => {
+    // KNOW IF IS A CHROME EXTENSION OR INJECTED APP
+    if (isChromeExtension()) {
+      chrome.tabs?.query({}, (tabs) => {
+        const activeWeb = tabs?.find(({ url }) => url?.includes('https://www.amazon.com/'));
+        if (!activeWeb) return;
+        chrome.scripting.executeScript({
+          target: { tabId: activeWeb?.id || 0 },
+          func: handleFunction,
+        });
+      });
+    } else {
+      movePanel(position);
+    }
+  };
+
+  const movePanel = (position) => {
+    try {
+      const reactRootDiv = document.getElementById('app');
+
+      if (!reactRootDiv) {
+        return null;
+      }
+
+      reactRootDiv.style.position = '';
+      reactRootDiv.style.left = '';
+      reactRootDiv.style.right = '';
+      reactRootDiv.style.top = '';
+      reactRootDiv.style.width = '';
+      reactRootDiv.style.height = '';
+      reactRootDiv.style.zIndex = '';
+      reactRootDiv.style.backgroundColor = 'white';
+
+      const currentParent = reactRootDiv.parentElement;
+      const targetElement = document.getElementById('a-page');
+
+      if (position === 'initial') {
+        const apexDesktop = document.getElementById('apex_desktop');
+        if (apexDesktop) {
+          apexDesktop.appendChild(reactRootDiv);
+
+          if (targetElement) {
+            targetElement.style.paddingLeft = '0';
+            targetElement.style.paddingRight = '0';
+          }
+        }
+        return;
+      }
+
+      if (currentParent && currentParent.id === 'apex_desktop') {
+        document.body.appendChild(reactRootDiv);
+      }
+
+      if (position === 'left') {
+        reactRootDiv.style.position = 'fixed';
+        reactRootDiv.style.left = '0';
+        reactRootDiv.style.right = '';
+      } else if (position === 'right') {
+        reactRootDiv.style.position = 'fixed';
+        reactRootDiv.style.right = '0';
+        reactRootDiv.style.left = '';
+      } else {
+        return;
+      }
+
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.zIndex = '9999';
+
+      if (targetElement) {
+        targetElement.style.paddingLeft = '0';
+        targetElement.style.paddingRight = '0';
+
+        if (position === 'left') {
+          targetElement.style.paddingLeft = '350px';
+        } else if (position === 'right') {
+          targetElement.style.paddingRight = '350px';
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const insertSidePanelRight = () => {
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('a-page');
+
+      if (!targetElement) return;
+
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      reactRootDiv.style.position = 'fixed';
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.right = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.backgroundColor = 'white';
+      targetElement.style.paddingRight = '350px';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      const font = document.createElement('link');
+      font.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap';
+      font.rel = 'stylesheet';
+      document.head.appendChild(font);
+      document.head.appendChild(link);
+
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const insertSidePanelLeft = () => {
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('a-page');
+
+      if (!targetElement) return;
+
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      reactRootDiv.style.position = 'fixed';
+      reactRootDiv.style.top = '0';
+      reactRootDiv.style.left = '0';
+      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.height = '100vh';
+      reactRootDiv.style.backgroundColor = 'white';
+      targetElement.style.paddingLeft = '350px';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      document.head.appendChild(link);
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const injectReactApp = () => {
+    try {
+      chrome.runtime.sendMessage({ type: 'CLOSE_POPUP' });
+      const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
+      const script = document.createElement('script');
+      script.src = reactAppUrl;
+      const targetElement = document.getElementById('apex_desktop');
+      if (!targetElement) return;
+      const reactRootDiv = document.createElement('div');
+      reactRootDiv.id = 'app';
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = chrome.runtime.getURL('dist/popup.css');
+      const font = document.createElement('link');
+      font.href = 'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap';
+      font.rel = 'stylesheet';
+      document.head.appendChild(font);
+      document.head.appendChild(link);
+      targetElement.appendChild(reactRootDiv);
+      targetElement.appendChild(script);
+    } catch (error) {
+      console.log('error');
+    }
+  };
+
+  const sendMessageToBackground = (message) => {
+    window.postMessage({ type: 'FROM_REACT_APP', message }, '*');
+  };
+
+  const handleOpenPopup = () => {
+    if (isChromeExtension()) return null;
+    const reactRootDiv = document.getElementById('app');
+    const targetElement = document.getElementById('a-page');
+    reactRootDiv?.remove();
+    if (targetElement) {
+      targetElement.style.paddingLeft = '0';
+      targetElement.style.paddingRight = '0';
+    }
+
+    sendMessageToBackground({ type: 'OPEN_POPUP' });
+  };
+
+  const closeElement = () => {
+    const reactRootDiv = document.getElementById('app');
+    const targetElement = document.getElementById('a-page');
+    reactRootDiv?.remove();
+    if (targetElement) {
+      targetElement.style.paddingLeft = '0';
+      targetElement.style.paddingRight = '0';
+    }
+  };
+
   return (
-    <div style={{ margin: '2rem' }}>
-      <div style={{ position: 'relative' }}>
-        <div className='box2'>
-          <p onClick={() => navigate('/')} className='textTwo' style={{ cursor: 'pointer' }}>
-            COME BACK
-          </p>
+    <div className='dashboardMain'>
+      <div className='dashboardHeader'>
+        <div className='w-1-3'>
+          <img src={'../images/logo.svg'} className='logo' alt='logo' />
+        </div>
+        <div className='w-1-3 centerContainer'>
+          <div className='dashboardIconsContainer'>
+            <Icon
+              icon='fluent:panel-left-48-filled'
+              onClick={() => handleClick('left', insertSidePanelLeft)}
+              cursor='pointer'
+              width={20}
+              height={14}
+              className={`iconHoverEffect`}
+            />
+
+            <Icon
+              icon='material-symbols-light:float-landscape-2-outline'
+              cursor='pointer'
+              width={20}
+              className={`iconHoverEffect`}
+              onClick={() => handleOpenPopup()}
+            />
+            <Icon
+              icon='proicons:window-add'
+              cursor='pointer'
+              width={20}
+              className={`iconHoverEffect`}
+              onClick={() => handleClick('initial', injectReactApp)}
+            />
+            <Icon
+              icon='fluent:panel-right-48-filled'
+              cursor='pointer'
+              width={14}
+              height={14}
+              onClick={() => handleClick('right', insertSidePanelRight)}
+              className={`iconHoverEffect`}
+            />
+          </div>
+        </div>
+        <div className='w-1-3 rightContainer'>
+          <div className='closeButton'>
+            <Icon icon='ic:round-close' width={14} height={14} className='closeIcon' onClick={closeElement} />
+          </div>
         </div>
       </div>
+
+      {/* <input value={text} onChange={handleChange}>Type something'</input> */}
+      {/* ZUSTAND */}
+      {/* <button id='insert-html' onClick={handleNavigate}>
+        Submit
+      </button>
+
+      <button id='count' onClick={increaseCount}>
+        Count
+      </button>
+      <p>Count: {count}</p> */}
+      {/* ZUSTAND */}
+
+      <Accordion title='Product' icon='fa6-solid:chess-queen'>
+        <Product />
+      </Accordion>
+
+      <Accordion title='Settings' icon='ic:round-settings'>
+        <Settings />
+      </Accordion>
+
+      <Accordion title='Product' icon='ic:round-settings'>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ width: 100 }}>
+            <FolderComponent
+              text='Elegible'
+              borderColor='var(--green)'
+              backgroundColor='var(--mint)'
+              tooltipContent={<p className='tooltipText'>Elegible</p>}>
+              <p className='boxText'>Yes</p>
+            </FolderComponent>
+          </div>
+          <div style={{ width: 100 }}>
+            <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+              <p className='boxText'>Yes</p>
+            </FolderComponent>
+          </div>
+          <div style={{ width: 100 }}>
+            <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+              <p className='boxText'>Yes</p>
+            </FolderComponent>
+          </div>
+          <div style={{ width: 100 }}>
+            <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
+              <p className='boxText'>Yes</p>
+            </FolderComponent>
+          </div>
+        </div>
+      </Accordion>
     </div>
   );
 };

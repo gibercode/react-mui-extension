@@ -1,0 +1,66 @@
+@import '../../../../../public/styles/index.scss';
+
+.productMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--blue);
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  max-width: 80ch;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.productRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyButton {
+  color: var(--indigo);
+  cursor: pointer;
+}
+
+.propertyContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+  border: 0.0625rem solid var(--blue);
+  border-radius: 0.125rem;
+}
+
+.productProperty {
+  font-weight: 400;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0.5625rem;
+  color: var(--indigo);
+  span {
+    color: var(--blue);
+  }
+}
+
+.productGrid {
+  display: grid;
+  gap: 1rem;
+
+  &.firstRow {
+    grid-template-columns: 2.5fr 4fr 2.5fr 3fr;
+  }
+  &.secondRow {
+    margin-top: 0.5rem;
+    grid-template-columns: 3fr 2.5fr 1.5fr 1.5fr 1.5fr 1.5fr;
+  }
+}
