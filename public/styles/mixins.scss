@@ -1,6 +1,6 @@
 @mixin folder($borderColor, $backgroundColor) {
   width: calc(100% + 1px);
-  height: 49px;
+  height: 47.7px;
   background-color: $borderColor;
   clip-path: polygon(
     100% 93.878%,
@@ -83,8 +83,8 @@
 
   &::after {
     content: '';
-    width: calc(100% - 2px);
-    height: 47px;
+    width: calc(100% - 1.5px);
+    height: 46.7px;
     background-color: $backgroundColor;
     clip-path: polygon(
       100% 93.878%,

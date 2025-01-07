@@ -1,6 +1,5 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import './styles.module.scss';
-import { Icon } from '@iconify/react';
 import { Tooltip } from '../Tooltip';
 
 interface InputProps {
@@ -37,7 +36,14 @@ const GeneralInput: React.FC<InputProps> = ({
           </label>
         </div>
       )}
-      <input type={type} className='_generalInput' placeholder={placeholder} value={value} onChange={onChange} />
+      <input
+        type={type}
+        name={name}
+        className='_generalInput'
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 };

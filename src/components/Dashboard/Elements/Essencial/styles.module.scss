@@ -1,0 +1,28 @@
+@import '../../../../../public/styles/index.scss';
+
+.essencialMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.essencialRow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.essencialGrid {
+  display: grid;
+  grid-gap: 1.5rem;
+
+  &.firstRow {
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    width: 100%;
+  }
+  &.secondRow {
+    margin-top: 0.5rem;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    gap: 1rem;
+  }
+}

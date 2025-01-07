@@ -22,7 +22,6 @@
 
 .settingsGrid {
   display: grid;
-
   grid-gap: 1.5rem;
 
   &.firstRow {
@@ -48,4 +47,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1rem 0;
+}
+._buttonBox {
+  min-width: 2.625rem;
+  width: fit-content;
 }

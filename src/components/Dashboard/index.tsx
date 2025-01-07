@@ -8,6 +8,7 @@ import Accordion from '../Accordion';
 import { Icon } from '@iconify/react';
 import { Product } from './Elements/Product';
 import { Settings } from './Elements/Settings';
+import { Essencial } from './Elements/Essencial';
 
 export const Dashboard = () => {
   const { count, increaseCount } = useCountStore();
@@ -287,15 +288,31 @@ export const Dashboard = () => {
       <p>Count: {count}</p> */}
       {/* ZUSTAND */}
 
-      <Accordion title='Product' icon='fa6-solid:chess-queen'>
-        <Product />
-      </Accordion>
+      <div className='_accordionSeparation'>
+        <Accordion title='Product' icon='fa6-solid:chess-queen'>
+          <Product />
+        </Accordion>
+      </div>
 
-      <Accordion title='Settings' icon='ic:round-settings'>
-        <Settings />
-      </Accordion>
+      <div className='_accordionSeparation'>
+        <Accordion title='Essential' icon='bitcoin-icons:verify-filled'>
+          <Essencial />
+        </Accordion>
+        <Accordion title='Advanced features' icon='iconamoon:lightning-1-fill'>
+          <Product />
+        </Accordion>
+        <Accordion title='Fees' icon='bxs:coin-stack'>
+          <Product />
+        </Accordion>
+      </div>
 
-      <Accordion title='Product' icon='ic:round-settings'>
+      <div className='_accordionSeparation'>
+        <Accordion title='Settings' icon='ic:round-settings'>
+          <Settings />
+        </Accordion>
+      </div>
+
+      {/* <Accordion title='Product' icon='ic:round-settings'>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div style={{ width: 100 }}>
             <FolderComponent
@@ -322,7 +339,7 @@ export const Dashboard = () => {
             </FolderComponent>
           </div>
         </div>
-      </Accordion>
+      </Accordion> */}
     </div>
   );
 };

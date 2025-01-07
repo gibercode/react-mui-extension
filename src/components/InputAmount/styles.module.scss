@@ -1,0 +1,36 @@
+._inputAmountContainer {
+  display: flex;
+  align-items: center;
+
+  height: 1.4375rem;
+  width: 80%;
+  position: relative;
+}
+
+._prefix {
+  position: absolute;
+  left: 0.25rem;
+  color: var(--blue);
+  font-size: 1rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+._inputAmount {
+  width: 100%;
+  text-align: right;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 0.0313rem solid var(--blue) !important;
+  border-radius: 0.375rem;
+
+  outline: none !important;
+  padding: 0.25rem 0.5rem;
+  height: 1.4375rem !important;
+  color: var(--blue);
+  background-color: var(--selago) !important;
+
+  &:disabled {
+    background-color: var(--light-gray);
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GeneralInput from '../../../GeneralInput';
 import './styles.module.scss';
 import GeneralSelect from '../../../GeneralSelect';
+import GeneralButton from '../../../GeneralButton';
 
 export const Settings = () => {
   const [selected, setSelected] = useState('');
@@ -54,7 +55,14 @@ export const Settings = () => {
               infoTooltip='Mail'
               tooltipClassName='_infoIcon'
             />
-            <div className='_buttonsContainer'></div>
+            <div className='_buttonsContainer'>
+              <div className='_buttonBox'>
+                <GeneralButton text={'Log out'} backgroundColor='var(--indigo)' onClick={() => {}} />
+              </div>
+              <div className='_buttonBox'>
+                <GeneralButton text={'Save'} onClick={() => {}} />
+              </div>
+            </div>
           </div>
 
           <div>
