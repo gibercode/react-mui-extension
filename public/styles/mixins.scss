@@ -163,3 +163,12 @@
     );
   }
 }
+
+@mixin folderText($color, $weight, $size) {
+  background-color: transparent !important;
+  padding: 0;
+  margin: 0;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

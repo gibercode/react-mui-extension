@@ -8,7 +8,9 @@ import Accordion from '../Accordion';
 import { Icon } from '@iconify/react';
 import { Product } from './Elements/Product';
 import { Settings } from './Elements/Settings';
-import { Essencial } from './Elements/Essencial';
+import { Essential } from './Elements/Essential';
+import { Advanced } from './Elements/Advanced';
+import { Fees } from './Elements/Fees';
 
 export const Dashboard = () => {
   const { count, increaseCount } = useCountStore();
@@ -294,15 +296,15 @@ export const Dashboard = () => {
         </Accordion>
       </div>
 
-      <div className='_accordionSeparation'>
-        <Accordion title='Essential' icon='bitcoin-icons:verify-filled'>
-          <Essencial />
+      <div className='_largeAccordion '>
+        <Accordion title='Essential' icon='bitcoin-icons:verify-filled' showBorder={false}>
+          <Essential />
         </Accordion>
-        <Accordion title='Advanced features' icon='iconamoon:lightning-1-fill'>
-          <Product />
+        <Accordion title='Advanced features' icon='iconamoon:lightning-1-fill' showBorder={false}>
+          <Advanced />
         </Accordion>
-        <Accordion title='Fees' icon='bxs:coin-stack'>
-          <Product />
+        <Accordion title='Fees' icon='bxs:coin-stack' showBorder={false}>
+          <Fees />
         </Accordion>
       </div>
 

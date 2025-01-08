@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import ReactDOM from 'react-dom';
 
 interface FolderComponentProps {
-  text: string;
+  text?: string;
   borderColor?: string;
   backgroundColor?: string;
   children?: React.ReactNode;
@@ -65,9 +65,11 @@ export const FolderComponent: FC<FolderComponentProps> = ({
             '--after-bg-color': backgroundColor || 'var(--mint)',
           } as React.CSSProperties
         }>
-        <p className='title' style={{ color: borderColor || 'var(--green)' }}>
-          {text}
-        </p>
+        {text && (
+          <p className='title' style={{ color: borderColor || 'var(--green)' }}>
+            {text}
+          </p>
+        )}
         <div className='children'>{children}</div>
       </div>
     </div>

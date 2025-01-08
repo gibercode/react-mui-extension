@@ -9,9 +9,18 @@ interface AccordionProps {
   customHeader?: any;
   title?: string;
   icon: string;
+  showBorder?: boolean;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ children, isExpanded, onToggle, customHeader, title, icon }) => {
+const Accordion: React.FC<AccordionProps> = ({
+  children,
+  isExpanded,
+  onToggle,
+  customHeader,
+  title,
+  icon,
+  showBorder = true,
+}) => {
   const [open, setIsOpen] = useState(false);
 
   const expanded = open ?? isExpanded;
@@ -26,7 +35,7 @@ const Accordion: React.FC<AccordionProps> = ({ children, isExpanded, onToggle, c
   };
 
   return (
-    <div className='accordion'>
+    <div className={showBorder ? '_accordion' : '_accordionNoBorder'}>
       <div className='header' onClick={handleToggle} role='button' aria-expanded={expanded}>
         {!customHeader ? (
           <>

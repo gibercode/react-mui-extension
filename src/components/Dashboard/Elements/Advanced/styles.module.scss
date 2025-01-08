@@ -1,0 +1,77 @@
+@import '../../../../../public/styles/index.scss';
+
+.advancedMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.advancedRow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.advancedTextBlue {
+  @include folderText(var(--blue), 600, 0.75rem);
+}
+
+.advancedGrid {
+  display: grid;
+  grid-gap: 1.5rem;
+
+  &.firstRow {
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    width: 100%;
+  }
+  &.secondRow {
+    margin-top: 0.5rem;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    width: 100%;
+  }
+  &.thirdRow {
+    margin-top: 0.5rem;
+    grid-template-columns: 3fr 9fr;
+    width: 100%;
+  }
+}
+
+._advancedMetricsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  width: 100%;
+  text-align: center;
+}
+
+._advancedMetricsRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+._advancedMetricsLabelContainer {
+  border-bottom: 0.0313rem solid var(--blue);
+  width: 100%;
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+._advancedMetricsValueContainer {
+  border-right: 0.0313rem solid var(--blue);
+  height: 100%;
+  width: 100%;
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+._advancedMetricsRow:last-child ._advancedMetricsValueContainer {
+  border-right: none;
+}
+
+._advancedMetricsLabel {
+  @include folderText(var(--blue), 400, 0.75rem);
+}
+
+._advancedMetricsValue {
+  @include folderText(var(--blue), 600, 0.875rem);
+}

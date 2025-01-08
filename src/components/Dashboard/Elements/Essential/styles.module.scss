@@ -1,0 +1,84 @@
+@import '../../../../../public/styles/index.scss';
+
+.essentialMain {
+  display: flex;
+  flex-direction: column;
+}
+
+.essentialRow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.essentialTextBlue {
+  @include folderText(var(--blue), 600, 0.75rem);
+}
+.essentialTextGreen {
+  @include folderText(var(--apple), 600, 0.75rem);
+}
+
+.essentialTextRed {
+  @include folderText(var(--red), 600, 0.75rem);
+}
+
+.essentialGrid {
+  display: grid;
+  grid-gap: 1.5rem;
+
+  &.firstRow {
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    width: 100%;
+  }
+  &.secondRow {
+    margin-top: 0.5rem;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    width: 100%;
+  }
+  &.thirdRow {
+    margin-top: 0.5rem;
+    grid-template-columns: 9fr 3fr;
+    width: 100%;
+  }
+}
+
+._metricsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 4fr);
+  width: 100%;
+  text-align: center;
+}
+
+._metricsRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+._metricLabelContainer {
+  border-bottom: 0.0313rem solid var(--blue);
+  width: 100%;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+._metricValueContainer {
+  border-right: 0.0313rem solid var(--blue);
+  height: 100%;
+  width: 100%;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+._metricsRow:last-child ._metricValueContainer {
+  border-right: none;
+}
+
+._metricLabel {
+  @include folderText(var(--blue), 400, 0.75rem);
+}
+
+._metricValue {
+  @include folderText(var(--blue), 600, 0.875rem);
+}

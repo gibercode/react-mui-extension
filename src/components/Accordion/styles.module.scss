@@ -1,10 +1,30 @@
 @import '../../../public/styles/index.scss';
 
-.accordion {
+._accordion {
   border: 0.0625rem solid var(--blue);
   border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
+}
+
+._accordionNoBorder {
+  overflow: hidden;
+  position: relative;
+  border: none;
+}
+
+._accordionNoBorder:nth-child(1) {
+  overflow: hidden;
+  position: relative;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+._accordionNoBorder:nth-child(3) {
+  overflow: hidden;
+  position: relative;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .header {
