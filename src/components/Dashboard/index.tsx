@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './styles.module.scss';
-import { FolderComponent } from '../Folder';
+
 import { useCountStore } from '../../store/count';
 import Accordion from '../Accordion';
 import { Icon } from '@iconify/react';
@@ -11,6 +11,7 @@ import { Settings } from './Elements/Settings';
 import { Essential } from './Elements/Essential';
 import { Advanced } from './Elements/Advanced';
 import { Fees } from './Elements/Fees';
+import { Offers } from './Elements/Offers';
 
 export const Dashboard = () => {
   const { count, increaseCount } = useCountStore();
@@ -305,6 +306,12 @@ export const Dashboard = () => {
         </Accordion>
         <Accordion title='Fees' icon='bxs:coin-stack' showBorder={false}>
           <Fees />
+        </Accordion>
+      </div>
+
+      <div className='_accordionSeparation'>
+        <Accordion title='Offers' icon='fa6-solid:chalkboard-user'>
+          <Offers />
         </Accordion>
       </div>
 

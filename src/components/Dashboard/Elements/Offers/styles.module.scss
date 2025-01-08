@@ -1,0 +1,79 @@
+@import '../../../../../public/styles/index.scss';
+
+._offersMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+._offersTableContainer {
+  overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 0 1rem;
+}
+
+._offersTableRow {
+  display: table-row;
+  border-bottom: 0.0313rem solid var(--gradientBlue);
+}
+
+._offersTableHeader {
+  font-size: 0.875rem;
+  display: table-header-group;
+}
+
+._offersHeader {
+  display: flex;
+  width: 100%;
+  border-bottom: 0.0313rem solid var(--blue);
+}
+
+._offersHeaderCell {
+  margin: 0 1rem 0.5rem 1rem;
+}
+
+._offersHeaderCell:first-child {
+  padding-left: 0.9375rem;
+}
+
+._offersTableHeaderCell {
+  padding: 0.625rem 0.9375rem;
+  font-size: 0.75rem;
+  color: var(--blue);
+  font-weight: 400;
+
+  text-align: center;
+}
+
+._offersTableCell {
+  padding: 0.625rem 0.9375rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--blue);
+}
+
+._offersTableRow:last-child {
+  border-bottom: none;
+}
+
+._negative {
+  color: var(--red);
+}
+
+._positive {
+  color: var(--green);
+}
+
+._offersValue {
+  font-size: 0.75rem;
+
+  font-weight: 600;
+}
+
+._offersHeaderValue {
+  font-size: 0.75rem;
+  color: var(--blue);
+  font-weight: 600;
+}

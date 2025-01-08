@@ -1,71 +1,70 @@
 @import '../../../../../public/styles/index.scss';
 
 ._feesMain {
-  padding: 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-}
-._tableContainer {
+  width: 97%;
   border: 0.5px solid var(--blue);
   border-radius: 0.3125rem;
+  margin-left: 3%;
+}
+
+._tableContainer {
   overflow: hidden;
   width: 100%;
+  border-collapse: collapse;
+  padding: 0 1rem;
 }
 
 ._tableRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: table-row;
   border-bottom: 0.0313rem solid var(--blue);
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
 }
 
 ._tableHeader {
   font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-._tableCell {
-  flex: 1;
-  text-align: left;
-  padding: 0.625rem 0.9375rem;
-  font-size: 0.75rem;
-  color: var(--blue);
+  display: table-header-group;
 }
 
 ._tableHeaderCell {
-  flex: 1;
-  text-align: left;
   padding: 0.625rem 0.9375rem;
   font-size: 0.75rem;
   color: var(--blue);
   font-weight: 400;
+  text-align: left;
 }
 
-._tableCell:last-child {
-  text-align: right;
-  font-weight: 600;
+._tableCell {
+  padding: 0.625rem 0.9375rem;
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--blue);
 }
 
 ._tableRow:last-child {
   border-bottom: none;
 }
 
+._tableHeaderCell:last-child,
+._tableCell:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+._tableHeaderCell:nth-child(2),
 ._tableCell:nth-child(2) {
   text-align: center;
 }
 
-._tableHeaderCell:nth-child(2) {
-  text-align: center;
+._feesValue {
+  font-size: 0.75rem;
+  color: var(--blue);
+  font-weight: 400;
 }
 
-._tableHeaderCell:last-child {
-  text-align: right;
+._feesHeader {
+  font-size: 0.75rem;
+  color: var(--blue);
+  font-weight: 600;
 }

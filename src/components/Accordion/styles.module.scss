@@ -16,15 +16,17 @@
 ._accordionNoBorder:nth-child(1) {
   overflow: hidden;
   position: relative;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.42rem;
+  border-top-right-radius: 0.42rem;
+  border-bottom: none;
 }
 
 ._accordionNoBorder:nth-child(3) {
   overflow: hidden;
   position: relative;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  border-top: none;
+  border-bottom-left-radius: 0.42rem;
+  border-bottom-right-radius: 0.42rem;
 }
 
 .header {
@@ -32,12 +34,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0.5rem;
+
   background-color: var(--ivory);
   color: var(--blue);
   cursor: pointer;
   z-index: 1;
   transition: background-color 0.3s;
-
+  border: none;
   &:hover {
     background-color: var(--blue);
     color: var(--ivory);
