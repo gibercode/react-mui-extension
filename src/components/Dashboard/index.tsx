@@ -12,10 +12,12 @@ import { Essential } from './Elements/Essential';
 import { Advanced } from './Elements/Advanced';
 import { Fees } from './Elements/Fees';
 import { Offers } from './Elements/Offers';
+import { Alerts } from './Elements/Alerts';
 
 export const Dashboard = () => {
   const { count, increaseCount } = useCountStore();
   const navigate = useNavigate();
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const handleNavigate = () => {
     navigate('/dashboard');
@@ -306,6 +308,52 @@ export const Dashboard = () => {
         </Accordion>
         <Accordion title='Fees' icon='bxs:coin-stack' showBorder={false}>
           <Fees />
+        </Accordion>
+      </div>
+
+      <div className='_accordionSeparation'>
+        <Accordion title='Settings' icon='ic:round-settings'>
+          <Settings />
+        </Accordion>
+      </div>
+
+      <div className='_accordionSeparation'>
+        <Accordion
+          customHeader={(props) => {
+            setIsPanelOpen(props.expanded);
+            return (
+              <div className='_alertsCustomHeaderMain '>
+                <div className='_alertsHalfContainer'>
+                  <div className='_halfContent'>
+                    <Icon icon={'fa6-solid:bell'} width={12} className={`icon`} />
+                    <p className='accordionTitle'>{'Alerts'}</p>
+                  </div>
+                  <div className='_halfContent'>
+                    <div className='_alertBoxGreen'>
+                      <p>{'6'}</p>
+                    </div>
+                    <div className='_alertBoxYellow'>
+                      <p>{'2'}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className='_alertsHalfContainer _separation'>
+                  <div className='_halfContent'>
+                    <Icon icon={'mingcute:tag-2-fill'} width={12} className={`icon`} />
+                    <p className='accordionTitle'>Rank & Prices</p>
+                  </div>
+                  <div className='_halfContent '>
+                    <Icon
+                      icon={props.expanded ? 'fa6-solid:circle-arrow-up' : 'fa6-solid:circle-arrow-down'}
+                      width={12}
+                      onClick={props.onClick}
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          }}>
+          <Alerts isPanelOpen={isPanelOpen} />
         </Accordion>
       </div>
 

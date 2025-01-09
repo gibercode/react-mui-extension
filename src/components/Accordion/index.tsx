@@ -8,7 +8,7 @@ interface AccordionProps {
   onToggle?: (isExpanded: boolean) => void;
   customHeader?: any;
   title?: string;
-  icon: string;
+  icon?: string;
   showBorder?: boolean;
 }
 
@@ -40,7 +40,7 @@ const Accordion: React.FC<AccordionProps> = ({
         {!customHeader ? (
           <>
             <div className='titleContainer'>
-              <Icon icon={icon} cursor='pointer' width={12} className={`icon`} />
+              <Icon icon={icon ?? ''} cursor='pointer' width={12} className={`icon`} />
               <p className='accordionTitle'>{title}</p>
             </div>
             <Icon icon={expanded ? 'fa6-solid:circle-arrow-up' : 'fa6-solid:circle-arrow-down'} width={12} />

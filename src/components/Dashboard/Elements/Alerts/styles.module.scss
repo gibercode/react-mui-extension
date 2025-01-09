@@ -1,0 +1,113 @@
+@import '../../../../../public/styles/index.scss';
+
+._alertsMain {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+._middleLine {
+  height: 90%;
+  position: absolute;
+  width: 1px;
+  background-color: var(--blue);
+  top: 5%;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+._alertsRow {
+  padding: 0 0.9375rem;
+  border-bottom: 0.0313rem solid var(--gradientBlue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+._alertRowNoBorder {
+  padding: 0 0.9375rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+._alertKey {
+  font-weight: 400;
+  color: var(--blue);
+  font-size: 0.625rem;
+  margin: 0.25rem 0;
+  width: 45%;
+}
+
+._alertValueGreen {
+  font-weight: 600;
+  color: var(--apple);
+  font-size: 0.5rem;
+  line-height: 1.25rem;
+  margin: 0.25rem 0;
+  width: 55%;
+  text-align: right;
+}
+
+._alertValueYellow {
+  font-weight: 600;
+  color: var(--yellow);
+  font-size: 0.5rem;
+  line-height: 1.25rem;
+  margin: 0.25rem 0;
+  width: 55%;
+  text-align: right;
+}
+
+._alertValueBlue {
+  font-weight: 600;
+  color: var(--blue);
+  font-size: 0.5rem;
+  line-height: 1.25rem;
+  margin: 0.25rem 0;
+  width: 55%;
+  text-align: right;
+}
+
+._alertsColumn {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+._chipsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 96%;
+  margin: 0 2%;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.0313rem solid var(--blue);
+}
+
+._chip {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.1875rem;
+  border: none;
+  color: var(--blue);
+  font-size: 0.5rem;
+  max-height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+._chipActive {
+  color: var(--blue);
+  border: 0.0625rem solid var(--blue);
+  background-color: var(--gradientBlue);
+  border-radius: 0.1875rem;
+}
