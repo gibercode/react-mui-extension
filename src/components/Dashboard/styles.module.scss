@@ -12,7 +12,7 @@
   @include folderText(var(--blue), 600, 0.75rem);
 }
 
-.tooltipText {
+._tooltipText {
   color: var(--selago);
   font-size: 0.3125rem;
   font-weight: medium;

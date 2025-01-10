@@ -39,16 +39,15 @@
 }
 
 ._offersTableHeaderCell {
-  padding: 0.625rem 0.9375rem;
+  padding: 0.625rem 0.9375rem !important;
   font-size: 0.75rem;
   color: var(--blue);
   font-weight: 400;
-
   text-align: center;
 }
 
 ._offersTableCell {
-  padding: 0.625rem 0.9375rem;
+  padding: 0.625rem 0.9375rem !important;
   text-align: center;
   font-size: 0.75rem;
   color: var(--blue);
@@ -68,7 +67,8 @@
 
 ._offersValue {
   font-size: 0.75rem;
-
+  padding: 0;
+  margin: 0;
   font-weight: 600;
 }
 

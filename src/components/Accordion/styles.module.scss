@@ -29,7 +29,7 @@
   border-bottom-right-radius: 0.42rem;
 }
 
-.header {
+._accordionHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,7 +68,8 @@
 
 .accordionContent {
   max-height: 0;
-  overflow: hidden;
+  // overflow: hidden;
+  z-index: 9999;
   transition:
     max-height 0.3s ease,
     padding 0.3s ease;

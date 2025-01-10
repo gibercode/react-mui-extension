@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import './styles.module.scss';
-import { FolderComponent } from '../../../Folder';
+import Folder from '../../../Folder';
 import InputAmount from '../../../InputAmount';
+
 export const Essential = () => {
   const [amount, setAmount] = useState('0.00');
 
@@ -14,68 +15,75 @@ export const Essential = () => {
     <div className='essentialMain'>
       <div className='essentialRow'>
         <div className='essentialGrid firstRow'>
-          <FolderComponent
-            text='Elegible'
-            borderColor='var(--apple)'
+          <Folder
+            borderColor={'var(--apple)'}
             backgroundColor='var(--hint)'
-            tooltipContent={<p className='tooltipText'>Elegible</p>}>
+            tooltipContent={<p className='_tooltipText'>Elegible</p>}>
+            <p className='essentialTitleGreen'>Elegible</p>
             <p className='essentialTextGreen'>Yes</p>
-          </FolderComponent>
+          </Folder>
 
-          <FolderComponent
-            text='Alerts'
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Alerts</p>}>
+            tooltipContent={<p className='_tooltipText'>Alerts</p>}>
+            <p className='essentialTitleBlue'>Alerts</p>
             <p className='essentialTextBlue'>Yes</p>
-          </FolderComponent>
-          <FolderComponent text='Cost Price' borderColor='var(--blue)' backgroundColor='var(--ivory)'>
+          </Folder>
+          <Folder
+            borderColor='var(--blue)'
+            backgroundColor='var(--ivory)'
+            tooltipContent={<p className='_tooltipText'>Cost Price</p>}>
+            <p className='essentialTitleBlue'>Cost Price</p>
+
             <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
-          </FolderComponent>
-          <FolderComponent text='Sale Price' borderColor='var(--blue)' backgroundColor='var(--ivory)'>
-            <p className='boxText'>Sale Price</p>
-          </FolderComponent>
+          </Folder>
+          <Folder
+            borderColor='var(--blue)'
+            backgroundColor='var(--ivory)'
+            tooltipContent={<p className='_tooltipText'>Sale Pric</p>}>
+            <p className='essentialTitleBlue'>Sale Price</p>
+
+            <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+          </Folder>
         </div>
       </div>
       <div className='essentialRow'>
         <div className='essentialGrid secondRow'>
-          <FolderComponent
-            text='Profit'
+          <Folder
             borderColor='var(--apple)'
             backgroundColor='var(--hint)'
-            tooltipContent={<p className='tooltipText'>Profit</p>}>
+            tooltipContent={<p className='_tooltipText'>Profit</p>}>
+            <p className='essentialTitleGreen'>Profit</p>
             <p className='essentialTextGreen'>$2.15</p>
-          </FolderComponent>
+          </Folder>
 
-          <FolderComponent
-            text='Profit Margin'
+          <Folder
             borderColor='var(--apple)'
             backgroundColor='var(--hint)'
-            tooltipContent={<p className='tooltipText'>Profit Margin</p>}>
+            tooltipContent={<p className='_tooltipText'>Profit Margin</p>}>
+            <p className='essentialTitleGreen'>Profit Margin</p>
             <p className='essentialTextGreen'>35.15%</p>
-          </FolderComponent>
-          <FolderComponent
-            text='Roi'
+          </Folder>
+          <Folder
             borderColor='var(--apple)'
             backgroundColor='var(--hint)'
-            tooltipContent={<p className='tooltipText'>Roi</p>}>
+            tooltipContent={<p className='_tooltipText'>Roi</p>}>
+            <p className='essentialTitleGreen'>Roi</p>
             <p className='essentialTextGreen'>71.67%</p>
-          </FolderComponent>
-          <FolderComponent
-            text='Max Cost'
+          </Folder>
+          <Folder
             borderColor='var(--apple)'
             backgroundColor='var(--hint)'
-            tooltipContent={<p className='tooltipText'>Max Cost</p>}>
+            tooltipContent={<p className='_tooltipText'>Max Cost</p>}>
+            <p className='essentialTitleGreen'>Max Cost</p>
             <p className='essentialTextGreen'>$2.15</p>
-          </FolderComponent>
+          </Folder>
         </div>
       </div>
       <div className='essentialRow'>
         <div className='essentialGrid thirdRow'>
-          <FolderComponent
-            borderColor='var(--blue)'
-            backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Metrics Details</p>}>
+          <Folder borderColor='#FF0000' backgroundColor='#FFF5F5'>
             <div className='_metricsContainer'>
               <div className='_metricsRow'>
                 <div className='_metricLabelContainer'>
@@ -110,15 +118,15 @@ export const Essential = () => {
                 </div>
               </div>
             </div>
-          </FolderComponent>
+          </Folder>
 
-          <FolderComponent
-            text='Breakeven'
+          <Folder
             borderColor='var(--red)'
             backgroundColor='var(--cosmos)'
-            tooltipContent={<p className='tooltipText'>Breakeven</p>}>
+            tooltipContent={<p className='_tooltipText'>Breakeven</p>}>
+            <p className='essentialTitleRed'>Breakeven</p>
             <p className='essentialTextRed'>$2.15</p>
-          </FolderComponent>
+          </Folder>
         </div>
       </div>
     </div>

@@ -300,7 +300,7 @@ export const Dashboard = () => {
       </div>
 
       <div className='_largeAccordion '>
-        <Accordion title='Essential' icon='bitcoin-icons:verify-filled' showBorder={false}>
+        <Accordion title='Essential Data' icon='bitcoin-icons:verify-filled' showBorder={false}>
           <Essential />
         </Accordion>
         <Accordion title='Advanced features' icon='iconamoon:lightning-1-fill' showBorder={false}>
@@ -308,12 +308,6 @@ export const Dashboard = () => {
         </Accordion>
         <Accordion title='Fees' icon='bxs:coin-stack' showBorder={false}>
           <Fees />
-        </Accordion>
-      </div>
-
-      <div className='_accordionSeparation'>
-        <Accordion title='Settings' icon='ic:round-settings'>
-          <Settings />
         </Accordion>
       </div>
 
@@ -368,35 +362,6 @@ export const Dashboard = () => {
           <Settings />
         </Accordion>
       </div>
-
-      {/* <Accordion title='Product' icon='ic:round-settings'>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ width: 100 }}>
-            <FolderComponent
-              text='Elegible'
-              borderColor='var(--green)'
-              backgroundColor='var(--mint)'
-              tooltipContent={<p className='tooltipText'>Elegible</p>}>
-              <p className='boxText'>Yes</p>
-            </FolderComponent>
-          </div>
-          <div style={{ width: 100 }}>
-            <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
-              <p className='boxText'>Yes</p>
-            </FolderComponent>
-          </div>
-          <div style={{ width: 100 }}>
-            <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
-              <p className='boxText'>Yes</p>
-            </FolderComponent>
-          </div>
-          <div style={{ width: 100 }}>
-            <FolderComponent text='Elegible' borderColor='#40B73B' backgroundColor='#EAFFE8'>
-              <p className='boxText'>Yes</p>
-            </FolderComponent>
-          </div>
-        </div>
-      </Accordion> */}
     </div>
   );
 };

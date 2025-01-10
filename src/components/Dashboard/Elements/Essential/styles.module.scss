@@ -12,15 +12,34 @@
   align-items: center;
 }
 
-.essentialTextBlue {
-  @include folderText(var(--blue), 600, 0.75rem);
-}
 .essentialTextGreen {
   @include folderText(var(--apple), 600, 0.75rem);
+  margin-bottom: 0.5rem;
 }
 
+.essentialTitleGreen {
+  @include folderText(var(--apple), 400, 0.625rem);
+
+  margin-bottom: 0.5rem;
+}
+
+.essentialTitleBlue {
+  @include folderText(var(--blue), 400, 0.625rem);
+
+  margin-bottom: 0.5rem;
+}
+.essentialTextBlue {
+  @include folderText(var(--blue), 600, 0.75rem);
+  margin-bottom: 0.5rem;
+}
+
+.essentialTitleRed {
+  @include folderText(var(--red), 400, 0.625rem);
+  margin-bottom: 0.5rem;
+}
 .essentialTextRed {
   @include folderText(var(--red), 600, 0.75rem);
+  margin: 0.5rem 0;
 }
 
 .essentialGrid {
@@ -81,4 +100,10 @@
 
 ._metricValue {
   @include folderText(var(--blue), 600, 0.875rem);
+}
+
+._tooltipText {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gray);
 }

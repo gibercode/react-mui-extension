@@ -12,8 +12,14 @@
   align-items: center;
 }
 
+.advancedTitleBlue {
+  @include folderText(var(--blue), 400, 0.625rem);
+
+  margin-bottom: 0.5rem;
+}
 .advancedTextBlue {
   @include folderText(var(--blue), 600, 0.75rem);
+  margin-bottom: 0.5rem;
 }
 
 .advancedGrid {
@@ -34,6 +40,10 @@
     grid-template-columns: 3fr 9fr;
     width: 100%;
   }
+}
+
+._folderBox {
+  max-height: 3.0625rem;
 }
 
 ._advancedMetricsContainer {
@@ -74,4 +84,10 @@
 
 ._advancedMetricsValue {
   @include folderText(var(--blue), 600, 0.875rem);
+}
+
+._tooltipText {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--gray);
 }

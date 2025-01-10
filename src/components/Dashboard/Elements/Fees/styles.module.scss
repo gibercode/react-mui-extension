@@ -7,7 +7,8 @@
   width: 97%;
   border: 0.5px solid var(--blue);
   border-radius: 0.3125rem;
-  margin-left: 3%;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
 }
 
 ._tableContainer {
@@ -15,6 +16,7 @@
   width: 100%;
   border-collapse: collapse;
   padding: 0 1rem;
+  margin: 0 !important;
 }
 
 ._tableRow {
@@ -28,7 +30,7 @@
 }
 
 ._tableHeaderCell {
-  padding: 0.625rem 0.9375rem;
+  padding: 0.625rem 0.9375rem !important;
   font-size: 0.75rem;
   color: var(--blue);
   font-weight: 400;
@@ -36,14 +38,14 @@
 }
 
 ._tableCell {
-  padding: 0.625rem 0.9375rem;
+  padding: 0.625rem 0.9375rem !important;
   text-align: left;
   font-size: 0.75rem;
   color: var(--blue);
 }
 
 ._tableRow:last-child {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 ._tableHeaderCell:last-child,
@@ -61,6 +63,8 @@
   font-size: 0.75rem;
   color: var(--blue);
   font-weight: 400;
+  padding: 0;
+  margin: 0;
 }
 
 ._feesHeader {

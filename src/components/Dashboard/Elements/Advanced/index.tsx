@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import './styles.module.scss';
-import { FolderComponent } from '../../../Folder';
+import Folder from '../../../Folder';
 import InputAmount from '../../../InputAmount';
 export const Advanced = () => {
   const [amount, setAmount] = useState('0.00');
@@ -15,103 +15,115 @@ export const Advanced = () => {
     <div className='advancedMain'>
       <div className='advancedRow'>
         <div className='advancedGrid firstRow'>
-          <FolderComponent
-            text='Fulfilment'
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Fulfilment</p>}>
+            tooltipContent={<p className='_tooltipText'>Fulfilment</p>}>
+            <p className='advancedTitleBlue'>Fulfilment</p>
             <p className='advancedTextBlue'>Yes</p>
-          </FolderComponent>
+          </Folder>
 
-          <FolderComponent
-            text='FBM Cost'
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>FBM Cost</p>}>
+            tooltipContent={<p className='_tooltipText'>FBM Cost</p>}>
+            <p className='advancedTitleBlue'>FBM Cost</p>
+
             <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
-          </FolderComponent>
-          <FolderComponent text='Profit' borderColor='var(--blue)' backgroundColor='var(--ivory)'>
+          </Folder>
+          <Folder
+            borderColor='var(--blue)'
+            backgroundColor='var(--ivory)'
+            tooltipContent={<p className='_tooltipText'>Profit</p>}>
+            <p className='advancedTitleBlue'>Profit</p>
             <p className='advancedTextBlue'>$1.40</p>
-          </FolderComponent>
-          <FolderComponent text='ROI' borderColor='var(--blue)' backgroundColor='var(--ivory)'>
-            <p className='boxText'>71.67%</p>
-          </FolderComponent>
+          </Folder>
+          <Folder
+            borderColor='var(--blue)'
+            backgroundColor='var(--ivory)'
+            tooltipContent={<p className='_tooltipText'>ROI</p>}>
+            <p className='advancedTitleBlue'>ROI</p>
+            <p className='advancedTextBlue'>71.67%</p>
+          </Folder>
         </div>
       </div>
       <div className='advancedRow'>
         <div className='advancedGrid secondRow'>
-          <FolderComponent
-            text='Max cost'
-            borderColor='var(--blue)'
-            backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Max cost</p>}>
-            <p className='advancedTextBlue'>%17.65%</p>
-          </FolderComponent>
+          <div className='_folderBox'>
+            <Folder
+              borderColor='var(--blue)'
+              backgroundColor='var(--ivory)'
+              tooltipContent={<p className='_tooltipText'>Max cost</p>}>
+              <p className='advancedTitleBlue'>Max cost</p>
+              <p className='advancedTextBlue'>%17.65%</p>
+            </Folder>
+          </div>
 
-          <FolderComponent
-            text='Profit Margin'
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Profit Margin</p>}>
+            tooltipContent={<p className='_tooltipText'>Profit Margin</p>}>
+            <p className='advancedTitleBlue'>Profit Margin</p>
             <p className='advancedTextBlue'>35.15%</p>
-          </FolderComponent>
-          <FolderComponent
-            text='Breaken Sale'
+          </Folder>
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Breaken Sale</p>}>
+            tooltipContent={<p className='_tooltipText'>Breaken Sale</p>}>
+            <p className='advancedTitleBlue'>Breaken Sale</p>
             <p className='advancedTextBlue'>$1.40</p>
-          </FolderComponent>
-          <FolderComponent
-            text='Est. Amz. Pay'
+          </Folder>
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Est. Amz. Pay</p>}>
+            tooltipContent={<p className='_tooltipText'>Est. Amz. Pay</p>}>
+            <p className='advancedTitleBlue'>Est. Amz. Pay</p>
             <p className='advancedTextBlue'>$6.15</p>
-          </FolderComponent>
+          </Folder>
         </div>
       </div>
       <div className='advancedRow'>
         <div className='advancedGrid thirdRow'>
-          <FolderComponent
-            text='Quantity'
+          <Folder
             borderColor='var(--blue)'
             backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Quantity</p>}>
-            <p className='essentialTextBlue'>$2.15</p>
-          </FolderComponent>
-
-          <FolderComponent
-            borderColor='var(--blue)'
-            backgroundColor='var(--ivory)'
-            tooltipContent={<p className='tooltipText'>Advanced Metrics Details</p>}>
-            <div className='_advancedMetricsContainer'>
-              <div className='_advancedMetricsRow'>
-                <div className='_advancedMetricsLabelContainer'>
-                  <p className='_advancedMetricsLabel'>Cost</p>
+            tooltipContent={<p className='_tooltipText'>Quantity</p>}>
+            <p className='advancedTitleBlue'>Quantity</p>
+            <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+          </Folder>
+          <div className='_folderBox'>
+            <Folder
+              borderColor='var(--blue)'
+              backgroundColor='var(--ivory)'
+              tooltipContent={<p className='_tooltipText'>Advanced Metrics Details</p>}>
+              <div className='_advancedMetricsContainer'>
+                <div className='_advancedMetricsRow'>
+                  <div className='_advancedMetricsLabelContainer'>
+                    <p className='_advancedMetricsLabel'>Cost</p>
+                  </div>
+                  <div className='_advancedMetricsValueContainer'>
+                    <p className='_advancedMetricsValue'>$00</p>
+                  </div>
                 </div>
-                <div className='_advancedMetricsValueContainer'>
-                  <p className='_advancedMetricsValue'>$00</p>
+                <div className='_advancedMetricsRow'>
+                  <div className='_advancedMetricsLabelContainer'>
+                    <p className='_advancedMetricsLabel'>Sale</p>
+                  </div>
+                  <div className='_advancedMetricsValueContainer'>
+                    <p className='_advancedMetricsValue'>$00</p>
+                  </div>
+                </div>
+                <div className='_advancedMetricsRow'>
+                  <div className='_advancedMetricsLabelContainer'>
+                    <p className='_advancedMetricsLabel'>Total profit</p>
+                  </div>
+                  <div className='_advancedMetricsValueContainer'>
+                    <p className='_advancedMetricsValue'>$00</p>
+                  </div>
                 </div>
               </div>
-              <div className='_advancedMetricsRow'>
-                <div className='_advancedMetricsLabelContainer'>
-                  <p className='_advancedMetricsLabel'>Sale</p>
-                </div>
-                <div className='_advancedMetricsValueContainer'>
-                  <p className='_advancedMetricsValue'>$00</p>
-                </div>
-              </div>
-              <div className='_advancedMetricsRow'>
-                <div className='_advancedMetricsLabelContainer'>
-                  <p className='_advancedMetricsLabel'>Total profit</p>
-                </div>
-                <div className='_advancedMetricsValueContainer'>
-                  <p className='_advancedMetricsValue'>$00</p>
-                </div>
-              </div>
-            </div>
-          </FolderComponent>
+            </Folder>
+          </div>
         </div>
       </div>
     </div>

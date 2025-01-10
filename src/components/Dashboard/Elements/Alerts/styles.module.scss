@@ -9,7 +9,7 @@
 ._middleLine {
   height: 90%;
   position: absolute;
-  width: 1px;
+  width: 0.0313rem;
   background-color: var(--blue);
   top: 5%;
   bottom: 5%;
@@ -27,7 +27,6 @@
 }
 ._alertRowNoBorder {
   padding: 0 0.9375rem;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,6 +39,7 @@
   font-size: 0.625rem;
   margin: 0.25rem 0;
   width: 45%;
+  padding: 0;
 }
 
 ._alertValueGreen {
@@ -50,6 +50,7 @@
   margin: 0.25rem 0;
   width: 55%;
   text-align: right;
+  padding: 0;
 }
 
 ._alertValueYellow {
@@ -60,6 +61,7 @@
   margin: 0.25rem 0;
   width: 55%;
   text-align: right;
+  padding: 0;
 }
 
 ._alertValueBlue {
@@ -70,6 +72,7 @@
   margin: 0.25rem 0;
   width: 55%;
   text-align: right;
+  padding: 0;
 }
 
 ._alertsColumn {

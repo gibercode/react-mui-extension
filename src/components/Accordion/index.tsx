@@ -36,7 +36,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div className={showBorder ? '_accordion' : '_accordionNoBorder'}>
-      <div className='header' onClick={handleToggle} role='button' aria-expanded={expanded} tabIndex={0}>
+      <div className='_accordionHeader' onClick={handleToggle} role='button' aria-expanded={expanded} tabIndex={0}>
         {!customHeader ? (
           <>
             <div className='titleContainer'>
