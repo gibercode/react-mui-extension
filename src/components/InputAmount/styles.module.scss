@@ -1,10 +1,10 @@
 ._inputAmountContainer {
   display: flex;
   align-items: center;
-
   height: 1.4375rem;
   width: 80%;
   position: relative;
+  pointer-events: auto;
 }
 
 ._prefix {
@@ -23,10 +23,9 @@
   font-weight: 700;
   border: 0.0313rem solid var(--blue) !important;
   border-radius: 0.375rem;
-
   outline: none !important;
-  padding: 0.25rem 0.5rem;
-  height: 1.4375rem !important;
+  padding: 0.12rem 0.5rem;
+  height: 1.125rem !important;
   color: var(--blue);
   background-color: var(--selago) !important;
 

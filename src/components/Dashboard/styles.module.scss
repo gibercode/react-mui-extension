@@ -3,11 +3,9 @@
 .dashboardMain {
   background-color: var(--indigo) !important;
   padding: 1rem !important;
+  height: 100%;
 }
-.logo {
-  width: 7.5rem;
-  height: 1.4375rem;
-}
+
 .boxText {
   @include folderText(var(--blue), 600, 0.75rem);
 }

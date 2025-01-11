@@ -13,7 +13,6 @@ function injectReactApp(tabId) {
         const reactAppUrl = chrome.runtime.getURL('dist/popup.js');
         const script = document.createElement('script');
         const logoUrl = chrome.runtime.getURL('dist/images/logo.svg');
-        console.log('Logo URL:', logoUrl);
 
         script.src = reactAppUrl;
         const targetElement = document.getElementById('apex_desktop');

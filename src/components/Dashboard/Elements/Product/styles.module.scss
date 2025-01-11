@@ -8,6 +8,7 @@
 .productName {
   font-weight: 400;
   font-size: 0.75rem;
+  margin-bottom: 0.25rem !important;
   color: var(--blue);
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -17,7 +18,7 @@
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
-  margin: 0 !important;
+
   padding: 0 !important;
 }
 

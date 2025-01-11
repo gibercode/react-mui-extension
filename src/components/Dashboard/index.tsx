@@ -13,6 +13,7 @@ import { Advanced } from './Elements/Advanced';
 import { Fees } from './Elements/Fees';
 import { Offers } from './Elements/Offers';
 import { Alerts } from './Elements/Alerts';
+import { Logo } from '../Logo';
 
 export const Dashboard = () => {
   const { count, increaseCount } = useCountStore();
@@ -237,7 +238,7 @@ export const Dashboard = () => {
     <div className='dashboardMain'>
       <div className='dashboardHeader'>
         <div className='w-1-3'>
-          <img src={'../images/logo.svg'} className='logo' alt='logo' />
+          <Logo width={'7.5rem'} height={'1.4375rem'} />
         </div>
         <div className='w-1-3 centerContainer'>
           <div className='dashboardIconsContainer'>

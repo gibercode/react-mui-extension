@@ -44,62 +44,82 @@
 
 .essentialGrid {
   display: grid;
-  grid-gap: 1.5rem;
 
   &.firstRow {
     grid-template-columns: 3fr 3fr 3fr 3fr;
     width: 100%;
   }
   &.secondRow {
-    margin-top: 0.5rem;
     grid-template-columns: 3fr 3fr 3fr 3fr;
     width: 100%;
   }
   &.thirdRow {
-    margin-top: 0.5rem;
     grid-template-columns: 9fr 3fr;
     width: 100%;
   }
 }
 
-._metricsContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 4fr);
-  width: 100%;
-  text-align: center;
+._folderBox {
+  margin: 0.25rem 0.5rem;
 }
 
-._metricsRow {
+._folderBoxPrimary {
+  margin: 0.25rem 1rem 0.25rem 0;
+}
+
+._folderBoxFinal {
+  margin: 0.25rem 0 0.25rem 1rem;
+}
+
+._largeFolderBox {
+  margin: 0.25rem 0.5rem 0.25rem 0;
+}
+
+._metricContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+._metricColumn {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
 }
-
-._metricLabelContainer {
-  border-bottom: 0.0313rem solid var(--blue);
-  width: 100%;
-  padding: 0 0.5rem 0 0.5rem;
-}
-
 ._metricValueContainer {
   border-right: 0.0313rem solid var(--blue);
-  height: 100%;
-  width: 100%;
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-top: 0.0313rem solid var(--blue);
 }
-
-._metricsRow:last-child ._metricValueContainer {
+._lastMetricValueContainer {
   border-right: none;
+  padding: 0.25rem 0.5rem;
+  border-top: 0.0313rem solid var(--blue);
 }
-
 ._metricLabel {
   @include folderText(var(--blue), 400, 0.75rem);
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 ._metricValue {
   @include folderText(var(--blue), 600, 0.875rem);
+  margin-top: 0.25rem;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 ._tooltipText {
