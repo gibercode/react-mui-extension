@@ -26,12 +26,6 @@ export const Product = () => {
             BSR <span>306 (1%)</span>
           </p>
         </div>
-
-        <div className='propertyContainer'>
-          <p className='productProperty'>
-            Size <span>Standard</span>
-          </p>
-        </div>
       </div>
       <div className='productGrid secondRow'>
         <div className='propertyContainer'>
@@ -48,6 +42,11 @@ export const Product = () => {
         </div>
       </div>
       <div className='productGrid thirdRow'>
+        <div className='propertyContainer'>
+          <p className='productProperty'>
+            Size <span>Standard</span>
+          </p>
+        </div>
         <div className='propertyContainer'>
           <p className='productProperty'>
             W <span>1.65 in</span>
