@@ -42,7 +42,9 @@ export const Essential = () => {
               tooltipContent={<p className='_tooltipText'>Cost Price</p>}>
               <p className='essentialTitleBlue'>Cost Price</p>
 
-              <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              <div className='_inputBox'>
+                <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              </div>
             </Folder>
           </div>
           <div className='_folderBox'>
@@ -52,7 +54,9 @@ export const Essential = () => {
               tooltipContent={<p className='_tooltipText'>Sale Pric</p>}>
               <p className='essentialTitleBlue'>Sale Price</p>
 
-              <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              <div className='_inputBox'>
+                <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              </div>
             </Folder>
           </div>
         </div>

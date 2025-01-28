@@ -42,6 +42,10 @@
   padding: 0;
 }
 
+._alertKey:last-child {
+  width: 100%;
+}
+
 ._alertValueGreen {
   font-weight: 600;
   color: var(--apple);

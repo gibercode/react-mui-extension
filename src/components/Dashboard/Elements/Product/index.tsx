@@ -46,6 +46,8 @@ export const Product = () => {
           </p>
           <Icon icon='fluent:document-copy-48-filled' width={16} height={16} className='copyButton' />
         </div>
+      </div>
+      <div className='productGrid thirdRow'>
         <div className='propertyContainer'>
           <p className='productProperty'>
             W <span>1.65 in</span>

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "My Preact Material Extension",
+  "name": "Totalizer Test",
   "version": "1.0",
   "action": {
     "default_popup": "index.html"

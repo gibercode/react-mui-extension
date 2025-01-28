@@ -4,6 +4,10 @@
   background-color: var(--indigo) !important;
   padding: 1rem !important;
   height: 100%;
+  width: 31.25rem;
+  max-width: 31.25rem;
+  z-index: 9999;
+  position: relative;
 }
 
 .boxText {

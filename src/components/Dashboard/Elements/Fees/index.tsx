@@ -20,13 +20,13 @@ export const Fees = () => {
         <thead className='_tableHeader'>
           <tr>
             <th className='_tableHeaderCell'>
-              <p className='_feesHeader  '>Name</p>
+              <p className='_feesHeader'>Name</p>
             </th>
             <th className='_tableHeaderCell'>
-              <p className='_feesHeader  '>Source</p>
+              <p className='_feesHeader'>Source</p>
             </th>
             <th className='_tableHeaderCell'>
-              <p className='_feesHeader  '>Amount</p>
+              <p className='_feesHeader'>Amount</p>
             </th>
           </tr>
         </thead>

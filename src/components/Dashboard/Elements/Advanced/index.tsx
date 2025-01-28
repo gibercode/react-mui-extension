@@ -32,7 +32,9 @@ export const Advanced = () => {
               tooltipContent={<p className='_tooltipText'>FBM Cost</p>}>
               <p className='advancedTitleBlue'>FBM Cost</p>
 
-              <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              <div className='_inputBox'>
+                <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              </div>
             </Folder>
           </div>
           <div className='_folderBox'>
@@ -63,7 +65,7 @@ export const Advanced = () => {
               backgroundColor='var(--ivory)'
               tooltipContent={<p className='_tooltipText'>Max cost</p>}>
               <p className='advancedTitleBlue'>Max cost</p>
-              <p className='advancedTextBlue'>%17.65%</p>
+              <p className='advancedTextBlue'>17.65%</p>
             </Folder>
           </div>
           <div className='_folderBox'>
@@ -103,7 +105,9 @@ export const Advanced = () => {
               backgroundColor='var(--ivory)'
               tooltipContent={<p className='_tooltipText'>Quantity</p>}>
               <p className='advancedTitleBlue'>Quantity</p>
-              <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              <div className='_inputBox'>
+                <InputAmount name='amount' value={amount} onChange={handleAmountChange} />
+              </div>
             </Folder>
           </div>
           <div className='_advancedLargeFolderBox'>

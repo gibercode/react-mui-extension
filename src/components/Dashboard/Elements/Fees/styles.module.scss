@@ -42,6 +42,7 @@
   text-align: left;
   font-size: 0.75rem;
   color: var(--blue);
+  width: 33.3% !important;
 }
 
 ._tableRow:last-child {
@@ -70,5 +71,5 @@
 ._feesHeader {
   font-size: 0.75rem;
   color: var(--blue);
-  font-weight: 600;
+  font-weight: 400;
 }
