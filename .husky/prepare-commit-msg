@@ -1,3 +1,6 @@
+# Here you can add any script you want to run before committing.
+# Example: npm run lint
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-  # Here you can add any script you want to run before committing.
-  # Example: npm run lint
+yarn build
