@@ -13,7 +13,7 @@
 }
 
 .advancedTitleBlue {
-  @include folderText(var(--blue), 400, 0.625rem);
+  @include folderText(var(--blue), 400, 0.75rem);
 
   margin-top: 0.25rem !important;
 }
@@ -56,7 +56,7 @@
 }
 
 ._advancedMetricContainer {
-  width: 90%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,12 +69,12 @@
 }
 ._advancedMetricValueContainer {
   border-right: 0.0313rem solid var(--blue);
-  padding: 0.25rem 0.5rem;
+  // padding: 0.25rem 0.5rem;
   border-top: 0.0313rem solid var(--blue);
 }
 ._advancedLastMetricValueContainer {
   border-right: none;
-  padding: 0.25rem 0.5rem;
+  // padding: 0.125rem 0.25rem;
   border-top: 0.0313rem solid var(--blue);
 }
 ._advancedMetricLabel {
@@ -91,7 +91,7 @@
 
 ._advancedMetricValue {
   @include folderText(var(--blue), 600, 0.875rem);
-  margin-top: 0.25rem;
+  // margin-top: 0.25rem;
   display: -webkit-box;
   text-overflow: ellipsis;
   overflow-wrap: anywhere;

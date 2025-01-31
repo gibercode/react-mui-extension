@@ -129,10 +129,10 @@ export const Dashboard = () => {
       reactRootDiv.style.position = 'fixed';
       reactRootDiv.style.top = '0';
       reactRootDiv.style.right = '0';
-      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.width = '500px';
       reactRootDiv.style.height = '100vh';
       reactRootDiv.style.backgroundColor = 'white';
-      targetElement.style.paddingRight = '350px';
+      targetElement.style.paddingRight = '500px';
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
@@ -165,10 +165,10 @@ export const Dashboard = () => {
       reactRootDiv.style.position = 'fixed';
       reactRootDiv.style.top = '0';
       reactRootDiv.style.left = '0';
-      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.width = '500px';
       reactRootDiv.style.height = '100vh';
       reactRootDiv.style.backgroundColor = 'white';
-      targetElement.style.paddingLeft = '350px';
+      targetElement.style.paddingLeft = '500px';
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.type = 'text/css';
@@ -295,7 +295,7 @@ export const Dashboard = () => {
       {/* ZUSTAND */}
 
       <div className='_accordionSeparation'>
-        <Accordion title='Product' icon='fa6-solid:chess-queen'>
+        <Accordion title='Product' icon='fa6-solid:chess-queen' isExpanded>
           <Product />
         </Accordion>
       </div>

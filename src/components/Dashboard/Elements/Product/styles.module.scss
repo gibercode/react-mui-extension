@@ -46,7 +46,7 @@
   font-weight: 400;
   margin: 0 !important;
   padding: 0 !important;
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   color: var(--indigo);
   span {
     color: var(--blue);
@@ -66,6 +66,6 @@
   }
   &.thirdRow {
     margin-top: 0.5rem;
-    grid-template-columns: 2.4fr 2.4fr 2.4fr 2.4fr 2.4fr;
+    grid-template-columns: 3fr 2.25fr 2.25fr 2.25fr 2.25fr;
   }
 }

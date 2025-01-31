@@ -12,33 +12,195 @@
   align-items: center;
 }
 
-.essentialTitleGreen {
-  @include folderText(var(--apple), 400, 0.625rem);
-  margin-top: 0.25rem !important;
+$colors: (
+  'Green': var(--apple),
+  'Blue': var(--blue),
+  'Red': var(--red),
+);
+
+$sizes: (
+  'Small': 0.75rem,
+  'Medium': 0.875rem,
+  'Large': 1rem,
+);
+
+@mixin essential-text($color, $weight, $size) {
+  color: $color;
+  font-weight: $weight;
+  font-size: $size;
+  margin: 0.25rem 0 !important;
 }
 
-.essentialTextGreen {
-  @include folderText(var(--apple), 600, 0.75rem);
-  margin-bottom: 0.5rem !important;
+@mixin metric-text($weight, $size) {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin: 0 !important;
+  @include folderText(var(--blue), $weight, $size);
 }
 
-.essentialTitleBlue {
-  @include folderText(var(--blue), 400, 0.625rem);
-  margin-top: 0.25rem !important;
-}
-.essentialTextBlue {
-  @include folderText(var(--blue), 600, 0.75rem);
-  margin-bottom: 0.5rem !important;
+@each $name, $color in $colors {
+  @each $size-name, $size-value in $sizes {
+    .essentialTitle#{$name}#{$size-name} {
+      @include essential-text($color, 400, $size-value);
+    }
+    .essentialText#{$name}#{$size-name} {
+      @include essential-text($color, 600, $size-value);
+    }
+    ._metricLabel#{$size-name} {
+      @include metric-text(400, $size-value);
+    }
+    ._metricValue#{$size-name} {
+      @include metric-text(600, $size-value);
+    }
+  }
 }
 
-.essentialTitleRed {
-  @include folderText(var(--red), 400, 0.625rem);
-  margin-top: 0.25rem !important;
-}
-.essentialTextRed {
-  @include folderText(var(--red), 600, 0.75rem);
-  margin-bottom: 0.5rem !important;
-}
+// dynamic font size
+
+// $colors: (
+//   'Green': var(--apple),
+//   'Blue': var(--blue),
+//   'Red': var(--red),
+// );
+
+// @mixin essential-text($color, $weight, $size) {
+//   @include folderText($color, $weight, $size);
+// }
+
+// @mixin metric-text($weight, $size) {
+//   display: -webkit-box;
+//   text-overflow: ellipsis;
+//   overflow-wrap: anywhere;
+//   max-width: 100%;
+//   overflow: hidden;
+//   -webkit-line-clamp: 1;
+//   line-clamp: 1;
+//   -webkit-box-orient: vertical;
+//   font-weight: $weight;
+//   font-size: $size;
+//   @include folderText(var(--blue), $weight, $size);
+//   margin: 0 !important;
+// }
+
+// @each $name, $color in $colors {
+//   .essentialTitle#{$name} {
+//     @include essential-text($color, 400, 0.75rem);
+//     margin-top: 0.25rem !important;
+//     margin-bottom: 0 !important;
+//   }
+//   .essentialText#{$name} {
+//     @include essential-text($color, 600, 0.75rem);
+//     margin-bottom: 0.5rem !important;
+//     margin-top: 0 !important;
+//   }
+
+//   .essentialTitle#{$name}Medium {
+//     @include essential-text($color, 400, 0.875rem);
+//     margin-top: 0.25rem !important;
+//     margin-bottom: 0 !important;
+//   }
+//   .essentialText#{$name}Medium {
+//     @include essential-text($color, 600, 0.875rem);
+//     margin-bottom: 0.5rem !important;
+//     margin-top: 0 !important;
+//   }
+
+//   .essentialTitle#{$name}Large {
+//     @include essential-text($color, 400, 1rem);
+//     margin-top: 0.25rem !important;
+//     margin-bottom: 0 !important;
+//   }
+//   .essentialText#{$name}Large {
+//     @include essential-text($color, 600, 1rem);
+//     margin-bottom: 0.5rem !important;
+//     margin-top: 0 !important;
+//   }
+
+//   ._metricLabel {
+//     @include metric-text(600, 0.75rem);
+//   }
+//   ._metricValue {
+//     @include metric-text(600, 0.75rem);
+//   }
+//   ._metricLabelMedium {
+//     @include metric-text(600, 0.875rem);
+//   }
+//   ._metricValueMedium {
+//     @include metric-text(600, 0.875rem);
+//   }
+//   ._metricLabelLarge {
+//     @include metric-text(600, 1rem);
+//   }
+//   ._metricValueLarge {
+//     @include metric-text(600, 1rem);
+//   }
+// }
+
+//dynamic font size
+
+// .essentialTitleGreen {
+//   @include folderText(var(--apple), 400, 0.75rem);
+//   margin-top: 0.25rem !important;
+// }
+
+// z
+
+// .essentialTextGreen {
+//   @include folderText(var(--apple), 600, 0.75rem);
+//   margin-bottom: 0.5rem !important;
+// }
+
+// .essentialTitleBlue {
+//   @include folderText(var(--blue), 400, 0.75rem);
+//   margin-top: 0.25rem !important;
+// }
+// .essentialTextBlue {
+//   @include folderText(var(--blue), 600, 0.75rem);
+//   margin-bottom: 0.5rem !important;
+// }
+
+// .essentialTitleRed {
+//   @include folderText(var(--red), 400, 0.75rem);
+//   margin-top: 0.25rem !important;
+// }
+// .essentialTextRed {
+//   @include folderText(var(--red), 600, 0.75rem);
+//   margin-bottom: 0.5rem !important;
+// }
+
+// .essentialTitleGreenMedium {
+//   @include folderText(var(--apple), 400, 1rem);
+//   margin-top: 0.25rem !important;
+// }
+
+// .essentialTextGreenMedium {
+//   @include folderText(var(--apple), 600, 1rem);
+//   margin-bottom: 0.5rem !important;
+// }
+
+// .essentialTitleBlueMedium {
+//   @include folderText(var(--blue), 400, 1rem);
+//   margin-top: 0.25rem !important;
+// }
+// .essentialTextBlueMedium {
+//   @include folderText(var(--blue), 600, 1rem);
+//   margin-bottom: 0.5rem !important;
+// }
+
+// .essentialTitleRedMedium {
+//   @include folderText(var(--red), 400, 1rem);
+//   margin-top: 0.25rem !important;
+// }
+// .essentialTextRedMedium {
+//   @include folderText(var(--red), 600, 1rem);
+//   margin-bottom: 0.5rem !important;
+// }
 
 .essentialGrid {
   display: grid;
@@ -74,7 +236,7 @@
 
 ._largeFolderBox {
   margin: 0.25rem 0.5rem 0.25rem 0;
-  max-width: 21.6875rem;
+  // max-width: 21.6875rem;
 }
 
 ._metricContainer {
@@ -91,37 +253,13 @@
 }
 ._metricValueContainer {
   border-right: 0.0313rem solid var(--blue);
-  padding: 0.25rem 0.5rem;
+  // padding: 0.25rem 0.5rem;
   border-top: 0.0313rem solid var(--blue);
 }
 ._lastMetricValueContainer {
   border-right: none;
-  padding: 0.25rem 0.5rem;
+  // padding: 0.25rem 0.5rem;
   border-top: 0.0313rem solid var(--blue);
-}
-._metricLabel {
-  @include folderText(var(--blue), 400, 0.75rem);
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  overflow-wrap: anywhere;
-  max-width: 100%;
-  overflow: hidden;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-._metricValue {
-  @include folderText(var(--blue), 600, 0.875rem);
-  // margin-top: 0.25rem;
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  overflow-wrap: anywhere;
-  max-width: 100%;
-  overflow: hidden;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 ._tooltipText {
