@@ -7,7 +7,6 @@
 
 .productName {
   font-weight: 400;
-  font-size: 0.75rem;
   margin-bottom: 0.25rem !important;
   color: var(--blue);
   display: -webkit-box;
@@ -18,7 +17,8 @@
   -webkit-line-clamp: 1;
   line-clamp: 1;
   -webkit-box-orient: vertical;
-
+  font-size: var(--dynamic-font-size);
+  font-family: $Geologica;
   padding: 0 !important;
 }
 
@@ -46,7 +46,8 @@
   font-weight: 400;
   margin: 0 !important;
   padding: 0 !important;
-  font-size: 0.75rem;
+  font-size: var(--dynamic-font-size);
+  font-family: $Geologica;
   color: var(--indigo);
   span {
     color: var(--blue);
@@ -56,16 +57,59 @@
 .productGrid {
   display: grid;
   gap: 1rem;
-
+  margin-top: 0.5rem;
   &.firstRow {
     grid-template-columns: 3fr 6fr 3fr;
   }
   &.secondRow {
-    margin-top: 0.5rem;
     grid-template-columns: 6fr 6fr;
   }
   &.thirdRow {
-    margin-top: 0.5rem;
-    grid-template-columns: 3fr 2.25fr 2.25fr 2.25fr 2.25fr;
+    grid-template-columns: 2.5fr 2.37fr 2.37fr 2.37fr 2.37fr;
   }
+}
+
+._addButton {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.1875rem;
+  border: none;
+  background-color: var(--blue);
+  color: var(--ivory);
+  max-height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  margin: 0 1rem;
+  font-size: var(--dynamic-font-size);
+  font-family: $Geologica;
+}
+
+._linksIconButtons {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  color: var(--blue);
+  background-color: var(--selago);
+  border-radius: 50%;
+  margin: 0 0.25rem;
+  &:hover {
+    background-color: var(--blue);
+    border-radius: 50%;
+    color: var(--ivory);
+  }
+}
+
+._buttonsIconContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  margin: 1rem 0 0 0;
 }

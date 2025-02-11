@@ -1,3 +1,4 @@
+@import '../../../public/styles/index.scss';
 ._generalButton {
   width: 100%;
   border-radius: 0.375rem;
@@ -20,7 +21,8 @@
 }
 ._buttonText {
   color: var(--ivory);
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   font-weight: 400;
   padding: 0 !important;
   margin: 0 !important;

@@ -35,8 +35,10 @@
 
 ._alertKey {
   font-weight: 400;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
-  font-size: 0.75rem;
+
   margin: 0.25rem 0;
   width: 45%;
   padding: 0;
@@ -49,7 +51,9 @@
 ._alertValueGreen {
   font-weight: 600;
   color: var(--apple);
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
+
   line-height: 1.25rem;
   margin: 0.25rem 0;
   width: 55%;
@@ -60,7 +64,8 @@
 ._alertValueYellow {
   font-weight: 600;
   color: var(--yellow);
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   line-height: 1.25rem;
   margin: 0.25rem 0;
   width: 55%;
@@ -71,7 +76,8 @@
 ._alertValueBlue {
   font-weight: 600;
   color: var(--blue);
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   line-height: 1.25rem;
   margin: 0.25rem 0;
   width: 55%;
@@ -100,7 +106,8 @@
   border-radius: 0.1875rem;
   border: none;
   color: var(--blue);
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   max-height: 2.5rem;
   display: flex;
   justify-content: center;
@@ -116,5 +123,7 @@
   color: var(--blue);
   border: 0.0625rem solid var(--blue);
   background-color: var(--gradientBlue);
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   border-radius: 0.1875rem;
 }

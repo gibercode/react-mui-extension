@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './styles.module.scss';
+import { useFontSizeStore } from '../../../../store/resource';
 
 const feesData = [
   { name: 'FBA Fee', source: 'Amazon', amount: '$00.00' },
@@ -14,8 +15,9 @@ const feesData = [
 ];
 
 export const Fees = () => {
+  const fontSize = useFontSizeStore((state) => state.fontSize);
   return (
-    <div className='_feesMain'>
+    <div className='_feesMain' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       <table className='_tableContainer'>
         <thead className='_tableHeader'>
           <tr>

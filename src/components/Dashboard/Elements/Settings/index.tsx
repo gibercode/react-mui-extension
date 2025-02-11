@@ -3,16 +3,17 @@ import GeneralInput from '../../../GeneralInput';
 import './styles.module.scss';
 import GeneralSelect from '../../../GeneralSelect';
 import GeneralButton from '../../../GeneralButton';
+import { useFontSizeStore } from '../../../../store/resource';
 
 export const Settings = () => {
   const [selected, setSelected] = useState('');
-
+  const fontSize = useFontSizeStore((state) => state.fontSize);
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(e.target.value);
   };
 
   return (
-    <div className='settingsMain'>
+    <div className='settingsMain' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       <div className='settingsRow'>
         <div className='settingsGrid firstRow'>
           <p className='settingTitle'>User info</p>

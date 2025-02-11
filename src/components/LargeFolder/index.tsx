@@ -51,10 +51,9 @@ const LargeFolder: React.FC<LargeFolderProps> = ({
           pointerEvents='none'
         />
       </svg>
+      <div className='_largeFolderContent'>{children}</div>
 
       {showTooltip && <div className={`_infoTooltip ${showTooltip ? 'visible' : ''}`}>{tooltipContent}</div>}
-
-      <div className='_largeFolderContent'>{children}</div>
     </div>
   );
 };

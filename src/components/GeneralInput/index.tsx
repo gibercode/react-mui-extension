@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import './styles.module.scss';
 import { Tooltip } from '../Tooltip';
+import { useFontSizeStore } from '../../store/resource';
 
 interface InputProps {
   name: string;
@@ -26,8 +27,9 @@ const GeneralInput: React.FC<InputProps> = ({
   tooltipClassName,
   iconSize,
 }) => {
+  const fontSize = useFontSizeStore((state) => state.fontSize);
   return (
-    <div className='_generalInputContainer'>
+    <div className='_generalInputContainer' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       {label && (
         <div>
           <label htmlFor={name} className='_generalInputLabel'>

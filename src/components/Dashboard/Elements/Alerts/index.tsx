@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
 import './styles.module.scss';
+import { useFontSizeStore } from '../../../../store/resource';
 
 export const Alerts = ({ isPanelOpen }) => {
   const options = ['Latest', '1 month', '3 months', '6 months', 'All'];
   const [activeChip, setActiveChip] = useState('Latest');
+  const fontSize = useFontSizeStore((state) => state.fontSize);
+
   return (
-    <div className='_alertsMain'>
+    <div className='_alertsMain' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       <div className='_alertsColumn'>
         <div className='_alertsRow'>
           <p className='_alertKey'>Amazon Share by box</p>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import './styles.module.scss';
@@ -14,11 +14,14 @@ import { Fees } from './Elements/Fees';
 import { Offers } from './Elements/Offers';
 import { Alerts } from './Elements/Alerts';
 import { Logo } from '../Logo';
+import { useFontSizeStore } from '../../store/resource';
 
 export const Dashboard = () => {
   const { count, increaseCount } = useCountStore();
   const navigate = useNavigate();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [containwerWidth, setContainerWidth] = useState(0);
+  const { setGlobalFontSize } = useFontSizeStore();
 
   const handleNavigate = () => {
     navigate('/dashboard');
@@ -95,7 +98,7 @@ export const Dashboard = () => {
       }
 
       reactRootDiv.style.top = '0';
-      reactRootDiv.style.width = '350px';
+      reactRootDiv.style.width = '500px';
       reactRootDiv.style.height = '100vh';
       reactRootDiv.style.zIndex = '9999';
 
@@ -104,9 +107,9 @@ export const Dashboard = () => {
         targetElement.style.paddingRight = '0';
 
         if (position === 'left') {
-          targetElement.style.paddingLeft = '350px';
+          targetElement.style.paddingLeft = '500px';
         } else if (position === 'right') {
-          targetElement.style.paddingRight = '350px';
+          targetElement.style.paddingRight = '500px';
         }
       }
     } catch (error) {
@@ -234,8 +237,39 @@ export const Dashboard = () => {
     }
   };
 
+  const parentRef = useRef<HTMLDivElement>(null);
+  const [fontSize, setFontSize] = useState('0.75em');
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const newSize = entry.contentRect.width;
+        setContainerWidth(newSize);
+      }
+    });
+
+    if (parentRef.current) {
+      observer.observe(parentRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (containwerWidth <= 550) {
+      setFontSize('0.75em');
+      setGlobalFontSize('0.75em');
+    } else if (containwerWidth > 551 && containwerWidth <= 700) {
+      setFontSize('1em');
+      setGlobalFontSize('1em');
+    } else {
+      setFontSize('1.125em');
+      setGlobalFontSize('1.125rem');
+    }
+  }, [containwerWidth]);
+
   return (
-    <div className='dashboardMain'>
+    <div className='dashboardMain' ref={parentRef}>
       <div className='dashboardHeader'>
         <div className='w-1-3'>
           <Logo width={'7.5rem'} height={'1.4375rem'} />

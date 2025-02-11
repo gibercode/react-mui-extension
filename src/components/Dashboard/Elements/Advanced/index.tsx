@@ -4,16 +4,17 @@ import './styles.module.scss';
 import Folder from '../../../Folder';
 import InputAmount from '../../../InputAmount';
 import LargeFolder from '../../../LargeFolder';
+import { useFontSizeStore } from '../../../../store/resource';
 export const Advanced = () => {
   const [amount, setAmount] = useState('0.00');
-
+  const fontSize = useFontSizeStore((state) => state.fontSize);
   const handleAmountChange = (value: string) => {
     console.log('Formatted Value:', value);
     setAmount(value);
   };
 
   return (
-    <div className='advancedMain'>
+    <div className='advancedMain' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       <div className='advancedRow'>
         <div className='advancedGrid firstRow'>
           <div className='_folderBoxPrimary'>
@@ -127,7 +128,7 @@ export const Advanced = () => {
                   <p className='_advancedMetricLabel'>Sale</p>
 
                   <div className='_advancedMetricValueContainer'>
-                    <p className='_metricValue'>$00</p>
+                    <p className='_advancedMetricValue'>$00</p>
                   </div>
                 </div>
 

@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import './styles.module.scss';
+import { useFontSizeStore } from '../../../../store/resource';
 
 export const Product = () => {
+  const fontSize = useFontSizeStore((state) => state.fontSize);
+
   return (
-    <div className='productMain'>
+    <div className='productMain' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       <div className='productRow'>
         <p className='productName'>Neutrogena T/Gel Therapeutic Shampoo Original Formula 16 oz (Packs of 2)</p>
         <Icon icon='fluent:document-copy-48-filled' width={16} height={16} className='copyButton' />
@@ -67,6 +70,15 @@ export const Product = () => {
             Wt <span>4.97 oz</span>
           </p>
         </div>
+      </div>
+
+      <div className='_buttonsIconContainer'>
+        <button className={`_addButton`} onClick={() => console.log('add product')}>
+          Add Product
+        </button>
+        <Icon icon='fa-brands:amazon' cursor='pointer' width={24} height={20} className={`_linksIconButtons`} />
+
+        <Icon icon='flat-color-icons:google' cursor='pointer' width={24} height={20} className={`_linksIconButtons`} />
       </div>
     </div>
   );

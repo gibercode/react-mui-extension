@@ -1,3 +1,5 @@
+@import '../../../public/styles/index.scss';
+
 ._generalSelectContainer {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
 
 ._generalSelectLabel {
   color: var(--blue);
-  font-size: 0.75rem;
+  font-size: 0.9vw;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -23,7 +25,8 @@
 
 ._generalSelect {
   width: 100%;
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   font-weight: 400;
   border: 0.0625rem solid var(--blue);
   border-radius: 0.1875rem;

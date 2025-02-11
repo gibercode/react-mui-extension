@@ -25,13 +25,15 @@
 }
 
 ._tableHeader {
-  font-size: 0.875rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   display: table-header-group;
 }
 
 ._tableHeaderCell {
   padding: 0.625rem 0.9375rem !important;
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
   font-weight: 400;
   text-align: left;
@@ -40,7 +42,8 @@
 ._tableCell {
   padding: 0.625rem 0.9375rem !important;
   text-align: left;
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
   width: 33.3% !important;
 }
@@ -61,7 +64,8 @@
 }
 
 ._feesValue {
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
   font-weight: 400;
   padding: 0;
@@ -69,7 +73,8 @@
 }
 
 ._feesHeader {
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
   font-weight: 400;
 }

@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import './styles.module.scss';
+import { useFontSizeStore } from '../../store/resource';
 
 interface ButtonProps {
   text: string;
@@ -8,6 +9,7 @@ interface ButtonProps {
 }
 
 const GeneralButton: React.FC<ButtonProps> = ({ text = 'Click', backgroundColor, onClick }) => {
+  const fontSize = useFontSizeStore((state) => state.fontSize);
   return (
     <button
       onClick={onClick}
@@ -15,6 +17,7 @@ const GeneralButton: React.FC<ButtonProps> = ({ text = 'Click', backgroundColor,
       style={
         {
           '--bg-color': backgroundColor || 'var(--blue)',
+          '--dynamic-font-size': fontSize,
         } as React.CSSProperties
       }>
       <p className='_buttonText'>{text}</p>

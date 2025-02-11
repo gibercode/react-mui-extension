@@ -11,13 +11,9 @@
   position: relative;
 }
 
-.boxText {
-  @include folderText(var(--blue), 600, 0.75rem);
-}
-
 ._tooltipText {
   color: var(--selago);
-  font-size: 0.75rem;
+  font-size: 0.9vw;
   font-weight: medium;
 }
 
@@ -120,7 +116,7 @@
   justify-content: center;
   align-items: center;
   color: var(--apple);
-  font-size: 0.75rem;
+  font-size: 0.9vw;
   font-weight: 600;
   margin-right: 0.25rem;
 }
@@ -135,7 +131,7 @@
   justify-content: center;
   align-items: center;
   color: var(--yellow);
-  font-size: 0.75rem;
+  font-size: 0.9vw;
   font-weight: 600;
   margin: 0 0.4688rem 0 0.25rem;
 }

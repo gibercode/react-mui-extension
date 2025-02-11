@@ -13,13 +13,20 @@
 }
 
 .advancedTitleBlue {
-  @include folderText(var(--blue), 400, 0.75rem);
-
+  font-family: $Geologica;
+  font-weight: 400;
+  color: var(--blue);
   margin-top: 0.25rem !important;
+  margin-bottom: 0 !important;
+  font-size: var(--dynamic-font-size);
 }
 .advancedTextBlue {
-  @include folderText(var(--blue), 600, 0.75rem);
+  font-family: $Geologica;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 0 !important;
   margin-bottom: 0.5rem !important;
+  font-size: calc(var(--dynamic-font-size) + 0.125em);
 }
 
 .advancedGrid {
@@ -56,7 +63,7 @@
 }
 
 ._advancedMetricContainer {
-  width: 95%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,19 +76,23 @@
 }
 ._advancedMetricValueContainer {
   border-right: 0.0313rem solid var(--blue);
-  // padding: 0.25rem 0.5rem;
+
   border-top: 0.0313rem solid var(--blue);
 }
 ._advancedLastMetricValueContainer {
   border-right: none;
-  // padding: 0.125rem 0.25rem;
+
   border-top: 0.0313rem solid var(--blue);
 }
 ._advancedMetricLabel {
-  @include folderText(var(--blue), 400, 0.75rem);
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
+  font-weight: 400;
+  color: var(--blue);
   display: -webkit-box;
   text-overflow: ellipsis;
   overflow-wrap: anywhere;
+  margin: 0 !important;
   max-width: 100%;
   overflow: hidden;
   -webkit-line-clamp: 1;
@@ -90,8 +101,12 @@
 }
 
 ._advancedMetricValue {
-  @include folderText(var(--blue), 600, 0.875rem);
-  // margin-top: 0.25rem;
+  font-family: $Geologica;
+  margin: 0 !important;
+  font-size: var(--dynamic-font-size + 0.125em);
+  font-weight: 600;
+  color: var(--blue);
+
   display: -webkit-box;
   text-overflow: ellipsis;
   overflow-wrap: anywhere;
@@ -103,7 +118,7 @@
 }
 
 ._tooltipText {
-  font-size: 0.75rem;
+  font-size: var(--dynamic-font-size);
   font-weight: 400;
   color: var(--gray);
 }

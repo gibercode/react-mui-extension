@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import './styles.module.scss';
 import { Tooltip } from '../Tooltip';
 import { Icon } from '@iconify/react';
+import { useFontSizeStore } from '../../store/resource';
 
 interface SelectProps {
   name: string;
@@ -28,8 +29,10 @@ const GeneralSelect: React.FC<SelectProps> = ({
   tooltipClassName,
   iconSize,
 }) => {
+  const fontSize = useFontSizeStore((state) => state.fontSize);
+
   return (
-    <div className='_generalSelectContainer'>
+    <div className='_generalSelectContainer' style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       {label && (
         <div>
           <label htmlFor={name} className='_generalSelectLabel'>

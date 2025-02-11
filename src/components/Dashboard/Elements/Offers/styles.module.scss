@@ -20,7 +20,8 @@
 }
 
 ._offersTableHeader {
-  font-size: 0.875rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   display: table-header-group;
 }
 
@@ -40,7 +41,8 @@
 
 ._offersTableHeaderCell {
   padding: 0.625rem 0.9375rem !important;
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
   font-weight: 400;
   text-align: center;
@@ -49,7 +51,8 @@
 ._offersTableCell {
   padding: 0.625rem 0.9375rem !important;
   text-align: center;
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
 }
 
@@ -59,21 +62,27 @@
 
 ._negative {
   color: var(--red);
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
 }
 
 ._positive {
   color: var(--green);
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
 }
 
 ._offersValue {
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   padding: 0;
   margin: 0;
   font-weight: 600;
 }
 
 ._offersHeaderValue {
-  font-size: 0.75rem;
+  font-family: $Geologica;
+  font-size: var(--dynamic-font-size);
   color: var(--blue);
   font-weight: 600;
 }

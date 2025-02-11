@@ -1,6 +1,7 @@
 import React, { memo, useState } from 'react';
 import './styles.module.scss';
 import { Icon } from '@iconify/react';
+import { useFontSizeStore } from '../../store/resource';
 
 interface AccordionProps {
   children: React.ReactNode;
@@ -21,8 +22,8 @@ const Accordion: React.FC<AccordionProps> = ({
   icon,
   showBorder = true,
 }) => {
-  const [open, setIsOpen] = useState(false);
-
+  const [open, setIsOpen] = useState(isExpanded);
+  const fontSize = useFontSizeStore((state) => state.fontSize);
   const expanded = open ?? isExpanded;
 
   const handleToggle = () => {
@@ -35,7 +36,9 @@ const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div className={showBorder ? '_accordion' : '_accordionNoBorder'}>
+    <div
+      className={showBorder ? '_accordion' : '_accordionNoBorder'}
+      style={{ '--dynamic-font-size': fontSize } as React.CSSProperties}>
       <div className='_accordionHeader' onClick={handleToggle} role='button' aria-expanded={expanded} tabIndex={0}>
         {!customHeader ? (
           <>
